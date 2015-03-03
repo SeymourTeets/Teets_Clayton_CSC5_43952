@@ -1,0 +1,38 @@
+/* 
+ * File:   main.cpp
+ * Author: Clayton Teets
+ * Created on March 2, 2015, 4:55 PM
+ *      Purpose: Addition and Multiplication Calculator
+ */
+//System Libraries
+#include <iostream>//I/O System Libraries
+using namespace std;//System Libraries using standard namespace
+
+//User Libraries
+
+//Global Constants
+
+//Function Prototype
+
+//Execution starts here
+
+int main(int argc, char** argv) {
+    //Declare Variables
+        float x,y,sum,product;
+        //Prompt for x input
+            cout<<"Input first value"<<endl;
+            cout<<"Enter as xxx.xx"<<endl;
+            cin>>x;
+        //Prompt for time
+            cout<<"Input second value"<<endl;
+            cout<<"Enter as xxx.xx"<<endl;
+            cin>>y;
+    //Calculate Sum
+        sum = x+y;
+        cout<<"Sum = "<<sum<<endl;
+    //Calculate for Product
+        product = x*y;
+        cout<<"Product = "<<product<<endl;
+    return 0;
+}
+

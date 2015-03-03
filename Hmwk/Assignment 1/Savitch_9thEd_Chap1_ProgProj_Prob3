@@ -1,0 +1,46 @@
+/* 
+ * File:   main.cpp
+ * Author: Clayton Teets
+ * Created on March 2, 2015, 7:50 PM
+ *      Purpose: Change Calculator
+ */
+
+#include <iostream>//I/O System Libraries
+using namespace std;//System Libraries using standard namespace
+
+//User Libraries
+
+//Global Constants
+const int qrtr=25;
+const int dime=10;
+const int nckl=5;
+
+//Function Prototype
+
+//Execution begins here
+
+int main(int argc, char** argv) {
+    //Declare Variables
+        int total,x,y,z,qvalue,dvalue,nvalue;
+        //Prompt for quarter amount
+            cout<<"How many quarter(s) do you have?"<<endl;
+            cout<<"Input value as xxx."<<endl;
+            cin>>x;
+        //Prompt for dime amount
+            cout<<"How many dime(s) do you have?"<<endl;
+            cout<<"Input value as xxx."<<endl;
+            cin>>y;
+        //Prompt for nickel amount
+            cout<<"How many nickel(s) do you have?"<<endl;
+            cout<<"Input value as xxx."<<endl;
+            cin>>z;
+    //Calculate Total
+            qvalue=qrtr*x;
+            dvalue=dime*y;
+            nvalue=nckl*z;
+            total=qvalue+dvalue+nvalue;
+    //Output Results
+            cout<<"You have "<<total<<"cents"<<endl;
+        return 0;
+}
+
