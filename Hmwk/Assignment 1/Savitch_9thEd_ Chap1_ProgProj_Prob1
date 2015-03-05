@@ -18,7 +18,7 @@ using namespace std;//System Libraries using standard namespace
 
 int main(int argc, char** argv) {
     //Declare Variables
-        float x,y,sum,product;
+        double x,y,sum,product;
         //Prompt for x input
             cout<<"Input first value"<<endl;
             cout<<"Enter as xxx.xx"<<endl;
@@ -27,10 +27,12 @@ int main(int argc, char** argv) {
             cout<<"Input second value"<<endl;
             cout<<"Enter as xxx.xx"<<endl;
             cin>>y;
-    //Calculate Sum
+    //Prompt Finish
+            cout<<"Calculation Complete."<<endl;
+    //Calculate Sum and Display
         sum = x+y;
         cout<<"Sum = "<<sum<<endl;
-    //Calculate for Product
+    //Calculate for Product and Display
         product = x*y;
         cout<<"Product = "<<product<<endl;
     return 0;

@@ -11,17 +11,18 @@ using namespace std;//System Libraries using standard namespace
 //User Libraries
 
 //Global Constants
-const int qrtr=25;
-const int dime=10;
-const int nckl=5;
-
+    const char qrtr=2.5e1f;
+    const char dime=1.0e1f;
+    const char nckl=0.5e1f;
+    const float hundrd=1.0e2f;
 //Function Prototype
 
 //Execution begins here
 
 int main(int argc, char** argv) {
     //Declare Variables
-        int total,x,y,z,qvalue,dvalue,nvalue;
+        unsigned int x,y,z,total,qvalue,dvalue,nvalue;
+        float dtotal;
         //Prompt for quarter amount
             cout<<"How many quarter(s) do you have?"<<endl;
             cout<<"Input value as xxx."<<endl;
@@ -35,12 +36,15 @@ int main(int argc, char** argv) {
             cout<<"Input value as xxx."<<endl;
             cin>>z;
     //Calculate Total
-            qvalue=qrtr*x;
-            dvalue=dime*y;
-            nvalue=nckl*z;
-            total=qvalue+dvalue+nvalue;
+            qvalue=qrtr*x;//Change in quarters
+            dvalue=dime*y;//Change in dimes
+            nvalue=nckl*z;//Change in nickels
+            total=qvalue+dvalue+nvalue;//Total change
+            dtotal=total/hundrd;//Total in dollars
+            
     //Output Results
-            cout<<"You have "<<total<<"cents"<<endl;
+            cout<<"You have "<<total<<" cents"<<endl; 
+            cout<<"You have "<<dtotal<<" dollars"<<endl;
         return 0;
 }
 
