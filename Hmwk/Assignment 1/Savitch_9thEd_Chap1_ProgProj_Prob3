@@ -14,15 +14,15 @@ using namespace std;//System Libraries using standard namespace
     const char qrtr=2.5e1f;
     const char dime=1.0e1f;
     const char nckl=0.5e1f;
-    const float hundrd=1.0e2f;
+    const char hundrd=1.0e2f;
 //Function Prototype
 
 //Execution begins here
 
 int main(int argc, char** argv) {
     //Declare Variables
-        unsigned int x,y,z,total,qvalue,dvalue,nvalue;
-        float dtotal;
+        unsigned int x,y,z,qvalue,dvalue,nvalue;
+        float total,dtotal;
         //Prompt for quarter amount
             cout<<"How many quarter(s) do you have?"<<endl;
             cout<<"Input value as xxx."<<endl;
