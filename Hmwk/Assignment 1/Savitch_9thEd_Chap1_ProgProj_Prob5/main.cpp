@@ -19,10 +19,11 @@ int main(int argc, char** argv) {
     //Declare Variables
     char c;//Character to be used to display c
     //Prompt for letter C to be used
-        cout<<"What letter would you like to use to create a large C"<<endl;
+        cout<<"What letter would you like to use to create a large C?"<<endl;
         cin>>c;
     //Output Large C
-        cout<<"  "<<c<<c<<c<<endl;
+        cout<<"\nHere is your C made of "<<c<<":"<<endl;
+        cout<<"\n  "<<c<<c<<c<<endl;
         cout<<" "<<c<<"  "<<c<<endl;
         cout<<c<<endl;
         cout<<c<<endl;

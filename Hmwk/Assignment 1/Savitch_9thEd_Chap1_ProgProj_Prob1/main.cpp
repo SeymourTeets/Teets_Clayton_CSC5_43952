@@ -18,22 +18,22 @@ using namespace std;//System Libraries using standard namespace
 
 int main(int argc, char** argv) {
     //Declare Variables
-        double x,y,sum,product;
+        double num1,num2,sum,product;
         //Prompt for x input
             cout<<"Input first value"<<endl;
             cout<<"Enter as xxx.xx"<<endl;
-            cin>>x;
+            cin>>num1;
         //Prompt for time
             cout<<"Input second value"<<endl;
             cout<<"Enter as xxx.xx"<<endl;
-            cin>>y;
+            cin>>num2;
     //Prompt Finish
             cout<<"Calculation Complete."<<endl;
     //Calculate Sum and Display
-        sum = x+y;
+        sum = num1 + num2;
         cout<<"Sum = "<<sum<<endl;
     //Calculate for Product and Display
-        product = x*y;
+        product = num1 * num2;
         cout<<"Product = "<<product<<endl;
     return 0;
 }

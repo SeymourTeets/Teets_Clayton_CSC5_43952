@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
         char e = '!';
         char d = '0';
     //Display Message
-        cout<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<endl;
+        cout<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<endl;
         cout<<"   "<<c<<c<<c<<"        "<<s<<s<<s<<s<<"     "<<e<<e<<endl;
         cout<<"  "<<c<<"   "<<c<<"      "<<s<<"    "<<s<<"    "<<e<<e<<endl;
         cout<<" "<<c<<"          "<<s<<"          "<<e<<e<<endl;
@@ -30,10 +30,10 @@ int main(int argc, char** argv) {
         cout<<c<<"             "<<s<<s<<s<<s<<"     "<<e<<e<<endl;
         cout<<c<<"                 "<<s<<"    "<<e<<e<<endl;
         cout<<" "<<c<<"                 "<<s<<"   "<<e<<e<<endl;
-        cout<<"  "<<c<<"   "<<c<<"      "<<s<<"    "<<s<<"    "<<e<<e<<endl;
+        cout<<"  "<<c<<"   "<<c<<"      "<<s<<"    "<<s<<"    "<<endl;
         cout<<"   "<<c<<c<<c<<"        "<<s<<s<<s<<s<<"     "<<d<<d<<endl;
-        cout<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<endl;
-        cout<<"Computer Science is Cool Stuff!"<<endl;
+        cout<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<x<<endl;
+        cout<<"\nComputer Science is Cool Stuff!"<<endl;
     return 0;
 }
 
