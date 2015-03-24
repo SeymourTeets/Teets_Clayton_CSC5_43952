@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     cout<<"The objects weight in newtons is "<<weight<<" and ";
     if (weight < 10)
         cout<<"the object is too light";
-    else if (weight > 100)
+    else if (weight > 1000)
         cout<<"the object is too heavy";
     else
         cout<<"the object is optimal weight";
