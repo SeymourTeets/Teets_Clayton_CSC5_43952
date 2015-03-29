@@ -1,0 +1,10 @@
+Your Bill from 'The Cable Guy Inc.'
+
+Customer Name: Clayton Teets
+
+Package: B
+
+Hours Used: 27.00
+
+Amount Owed: $21.95
+

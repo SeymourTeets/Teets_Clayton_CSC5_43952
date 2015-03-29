@@ -12,7 +12,7 @@ using namespace std;
 //User Libraries
 
 //Global Constants
-float PI = 3.14159f;
+float PI = 3.14159f;//Irrational number with magical properties
 float CONVMTW = 9.8f;//Converts mass (kilograms) to weight (newtons)
 //Function Prototypes
 
@@ -329,7 +329,7 @@ int main(int argc, char** argv) {
             //Open File
                 out.open("CableBill.txt");
             //Prompt for inputs
-                cout<<"I will calculate this months internet bill"<<endl;
+                cout<<"I will calculate this months internet bill."<<endl;
                 cout<<"How many hours of internet did you view this month? "<<endl;
                 cin>>hours;
                 cout<<"What is you package? (A, B, or C) "<<endl;
