@@ -30,8 +30,11 @@ int main(int argc, char** argv) {
         for(int i = 2; i <= num; ++i )
         {
             cin >> inNum;// read input
-            if( inNum > highNum )// compare to highest yet
-                highNum = inNum;// replace highest
+            if( inNum > highNum ){// compare to highest yet
+                highNum = inNum;}// replace highest
+            if(inNum < lowNum){
+                
+            }
         }
     cout << "The highest number entered was: " << highNum;
     return 0;
