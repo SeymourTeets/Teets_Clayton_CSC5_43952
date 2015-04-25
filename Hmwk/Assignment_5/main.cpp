@@ -24,7 +24,6 @@ void problem6();
 void problem7();
 void problem8();
 void problem9();
-
 //Execution Begins Here
 int main(int argc, char** argv) {
     //Declare menu variable choice
