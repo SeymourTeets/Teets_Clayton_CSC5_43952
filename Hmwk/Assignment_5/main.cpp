@@ -80,15 +80,21 @@ void problem0(){
               rPrice;//Retail Price
     //Prompt for Inputs
         cout<<"Enter the wholesale cost and the mark up percentage (don't include '%')"<<endl;
-        cout<<"Wholesale cost : ";
+        cout<<"Wholesale Cost : ";
         cin>>wCost;
-        cout<<"Markup : ";
+        while (wCost < 0) {cout<<"Enter a positive value. Wholesale Cost : ";
+                           cin>>wCost;                      }
+        cout<<"Markup         : ";
         cin>>markup;
+         while (markup < 0) {cout<<"Enter a positive value. Markup       : ";
+                           cin>>markup;}
+        cout<<endl;
     //$ Formatting
         cout<<fixed<<setprecision(2)<<showpoint;
     //Output Retail Price
         cout<<"If an item's wholesale cost is "<<wCost<<" and its markup percentage"
-            <<" is "<<markup<<"%, then the items retail price is $"<<calcRet(wCost, markup)<<endl;      }
+            <<" is "<<markup<<"%, then the items retail price is $"<<calcRet(wCost, markup)<<endl;
+        cout<<endl;     }
 
 //*******************         Problem 1           ********************/
 float celsius(int f) {
@@ -116,7 +122,8 @@ void problem2(){
     //Loop Output x10
         for (t=1; t<=10; t++) {cout<<"At "<<t<<" seconds, the object has fallen ";
                                cout<<fallDis(t)<<" meters"<<endl;}   
-                               cout<<endl;  }
+                               cout<<endl; 
+                               cout<<endl;      }
 
 //*******************         Problem 3           ********************/
 float kEnergy(float mass, float velocty) {
@@ -202,7 +209,7 @@ void problem4(){
         if (top == ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}
         if (top == sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
         if (top == se) {cout<<"Southeast has the highest sales at $"<<se<<endl;}
-        cout<<endl;                                                                }
+        cout<<endl<<endl;                                                      }
 
 //*******************         Problem 5           ********************/
 int getNAcc(float x) {
@@ -256,7 +263,57 @@ void problem5(){
 }
 
 //*******************         Problem 6           ********************/
+float getJsco(float x) {
+    cout<<"Enter your score (1-10) : ";
+    cin>>x;//Validation Placeholder
+    while (x<0 || 10<x) {cout<<"        Please Enter a value 1-10 : ";
+                 cin>>x;                                            }
+    return x;   }
+float calSco(float j1, float j2, float j3, float j4, float j5) {
+    //Determine Highest Score
+        float high = j1;//Highest Score
+        if (j2 > high) {high = j2;}
+        if (j3 > high) {high = j3;}
+        if (j4 > high) {high = j4;}
+        if (j5 > high) {high = j5;}
+    //Determine Lowest Score
+        int low = j1;//Lowest Area
+        if (j2 < low) {low = j2;}
+        if (j3 < low) {low = j3;}
+        if (j4 < low) {low = j4;}
+        if (j5 < low) {low = j5;}
+    //Calculate Average Score
+        float score;//Average Score
+        score = j1 + j2 + j3 + j4 + j5;
+        score -= high + low;
+        score /= 3;
+        return score;
+}
 void problem6(){
+    //Declare Variables
+    float j1,//Judge 1
+          j2,//Judge 2
+          j3,//Judge 3
+          j4,//Judge 4
+          j5,//Judge 5
+           x,//Input Validation
+       score;//Score
+    //Prompt for Input
+    cout<<"Please enter the contestants scores."<<endl;
+    cout<<"Judge 1 : ";
+    j1 = getJsco(x);
+    cout<<"Judge 2 : ";
+    j2 = getJsco(x);
+    cout<<"Judge 3 : ";
+    j3 = getJsco(x);
+    cout<<"Judge 4 : ";
+    j4 = getJsco(x);
+    cout<<"Judge 5 : ";
+    j5 = getJsco(x);
+    cout<<endl;
+    //Call Calculation Function
+    score = calSco(j1, j2, j3, j4, j5);
+    cout<<"The average score is = "<<score<<endl<<endl;
     
 }
 
@@ -284,6 +341,7 @@ void problem8(){
         cin>>nYears;
         cout<<"Interest Rate  : ";
         cin>>interest;
+        cout<<endl;
     //Call pValue Function and Output Present Value
         cout<<"To acquire $"<<fBalnce<<" in "<<nYears<<" years with and interest ";
         cout<<"rate of %"<<interest<<", you must credit your savings account $";
