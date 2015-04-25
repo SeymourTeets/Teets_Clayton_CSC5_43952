@@ -28,6 +28,8 @@ float calcRet(float, float);              //<- Problem 1
 float celsius(int);                       //<- Problem 2
 float fallDis(int);                       //<- Problem 3
 float kEnergy(float, float);              //<- Problem 4
+float getSale(float);                     //<- Problem 5
+void highSal(float, float, float, float); //<- Problem 5
 float pValue(int, int, float);            //<- Problem 10
 int popSize(unsigned short, float, float);//<- Problem 15
 //Execution Begins Here
@@ -57,7 +59,7 @@ int main(int argc, char** argv) {
             case '1':problem1();break;
             case '2':problem2();break;
             case '3':problem3();break;
-            //case '4':problem4();break;
+            case '4':problem4();break;
             //case '5':problem5();break;
             //case '6':problem6();break;
             //case '7':problem7();break;
@@ -116,39 +118,66 @@ void problem2(){
                                cout<<fallDis(t)<<" meters"<<endl;}   
                                cout<<endl;  }
 float fallDis(int t) {
-    //Declare Variables
     float distnce;
-    //Calculate Distance Fallen
-    distnce = (.5f * GRAVITY * (pow(t,2)));
-    return distnce;
-}
+    distnce = (.5f * GRAVITY * (pow(t,2)));//Calculate Distance Fallen
+    return distnce;     }
 
 //*******************         Problem 3           ********************/
 void problem3(){
     //Declare Variables
-    float mass, velocty;
+        float mass, velocty;
     //Prompt for Inputs
-    cout<<"Given mass and velocity, I will calculate kinetic energy."<<endl;
-    cout<<"Mass     (kg) : ";
-    cin>>mass;
-    cout<<"Velocity (m/s): ";
-    cin>>velocty;
+        cout<<"Given mass and velocity, I will calculate kinetic energy."<<endl;
+        cout<<"Mass     (kg) : ";
+        cin>>mass;
+        cout<<"Velocity (m/s): ";
+        cin>>velocty;
     //Call kEnergy
-    cout<<"The kinetic energy of "<<mass<<" kg travelling at "<<velocty<<" m/s ";
-    cout<<"is "<<kEnergy(mass, velocty)<<" joules."<<endl;
+        cout<<"The kinetic energy of "<<mass<<" kg travelling at "<<velocty<<" m/s ";
+        cout<<"is "<<kEnergy(mass, velocty)<<" joules."<<endl;
 }
 float kEnergy(float mass, float velocty) {
-    //Declare Variables
-        float ke;//Kinetic Energy
-    //Calculate Kinetic Energy
-        ke = (.5f * mass * (pow(velocty,2)));
-    return ke;
-}
+    float ke;//Kinetic Energy
+    ke = (.5f * mass * (pow(velocty,2)));//Calculate Kinetic Energy
+    return ke;      }
 
 //*******************         Problem 4           ********************/
 void problem4(){
-
-}
+    //Declare Variables
+        float ne, nw, se, sw, x;
+    //Prompt User for Inputs
+        cout<<fixed<<setprecision(2)<<showpoint;
+        cout<<"Enter the quarterly sales for each branch."<<endl;
+        cout<<"Northeast : ";
+        ne = getSale(x);
+        cout<<"Northwest : ";
+        nw = getSale(x);
+        cout<<"Southeast : ";
+        se = getSale(x);
+        cout<<"Southwest : ";
+        sw = getSale(x);
+        cout<<endl;
+    //Output Results
+        highSal(ne, nw, se, sw);        }
+float getSale(float x) {
+    cout<<"Enter your quarterly sales $";
+    cin>>x;//Validation Placeholder
+    while (x<0) {cout<<"Enter a positive value or you're fired! $";
+                 cin>>x;                                            }
+    return x;   }
+void highSal(float ne, float nw, float se, float sw) {
+    if      (ne<nw && nw<se && se<sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
+    else if (nw<se && se<ne && ne<sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
+    else if (se<ne && ne<nw && nw<sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
+    else if (sw<ne && ne<nw && nw<se) {cout<<"Southeast has the highest sales at $"<<se<<endl;}
+    else if (nw<sw && sw<ne && ne<se) {cout<<"Southeast has the highest sales at $"<<se<<endl;}
+    else if (ne<nw && nw<sw && sw<se) {cout<<"Southeast has the highest sales at $"<<se<<endl;} 
+    else if (se<sw && sw<ne && ne<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}
+    else if (sw<ne && ne<se && se<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}
+    else if (ne<se && se<sw && sw<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}    
+    else if (nw<se && se<sw && sw<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}
+    else if (se<sw && sw<nw && nw<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}
+    else if (nw<nw && nw<se && se<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}     }
 
 //*******************         Problem 5           ********************/
 void problem5(){
@@ -168,23 +197,22 @@ void problem7(){
 //*******************         Problem 8           ********************/
 void problem8(){
     //Declare Variables
-    int nYears, fBalnce;
-    float interest;
+        int nYears, fBalnce;
+        float interest;
     //Prompt User for Inputs
-    cout<<"Enter the following to calculate what you need to save."<<endl;
-    cout<<"Future Balance : ";
-    cin>>fBalnce;
-    cout<<"Years to Save  : ";
-    cin>>nYears;
-    cout<<"Interest Rate  : ";
-    cin>>interest;
+        cout<<"Enter the following to calculate what you need to save."<<endl;
+        cout<<"Future Balance : ";
+        cin>>fBalnce;
+        cout<<"Years to Save  : ";
+        cin>>nYears;
+        cout<<"Interest Rate  : ";
+        cin>>interest;
     //Call pValue Function and Output Present Value
-    cout<<"To acquire $"<<fBalnce<<" in "<<nYears<<" years with and interest ";
-    cout<<"rate of %"<<interest<<", you must credit your savings account $";
-    cout<<fixed<<setprecision(2)<<showpoint;
-    cout<<pValue(fBalnce, nYears, interest)<<endl;
-    cout<<endl;
-}
+        cout<<"To acquire $"<<fBalnce<<" in "<<nYears<<" years with and interest ";
+        cout<<"rate of %"<<interest<<", you must credit your savings account $";
+        cout<<fixed<<setprecision(2)<<showpoint;
+        cout<<pValue(fBalnce, nYears, interest)<<endl;
+        cout<<endl;}
 float pValue(int fBalnce, int nYears, float interest) {
     float add;//$'s to save
     interest /= 100;//Convert % to decimal form
@@ -195,33 +223,29 @@ float pValue(int fBalnce, int nYears, float interest) {
 //*******************         Problem 9           ********************/
 void problem9(){
    //Declare Variables
-    unsigned short pop, years;
-    float bRate, dRate;
+        unsigned short pop, years;
+        float bRate, dRate;
     //Prompt for input
-    cout<<"I will calculate the the population size over a given amount of years"<<endl;
-    cout<<"Initial Population : ";
-    cin>>pop;
-    cout<<"Birth Rate         : ";
-    cin>>bRate;
-    cout<<"Death Rate         : ";
-    cin>>dRate;
-    cout<<"Year(s)            : ";
-    cin>>years;
-    cout<<endl;
+        cout<<"I will calculate the the population size over a given amount of years"<<endl;
+        cout<<"Initial Population : ";
+        cin>>pop;
+        cout<<"Birth Rate         : ";
+        cin>>bRate;
+        cout<<"Death Rate         : ";
+        cin>>dRate;
+        cout<<"Year(s)            : ";
+        cin>>years;
+        cout<<endl;
     //Setup Loop and Output Population
-    for (int i=1; i<=years; i++) {
-        pop += popSize(pop, bRate, dRate);
-        cout<<"The population after "<<i<<" year(s) is "<<pop<<endl;}
-    cout<<endl;
-}
+        for (int i=1; i<=years; i++) {
+            pop += popSize(pop, bRate, dRate);
+            cout<<"The population after "<<i<<" year(s) is "<<pop<<endl;}
+        cout<<endl;     }
 int popSize(unsigned short pop, float bRate, float dRate) {
-    //Declare Variables
-    float newpop;
-    //Convert Birth and Death Rate to decimal form
-    bRate /= 100;
-    dRate /= 100;
-    //Calculate New Population
-    newpop = (pop * ((1+bRate) * (1-dRate)));
-    newpop += .5f;
+    float newpop;//New Population
+    bRate /= 100;//Convert Birth Rate to decimal form
+    dRate /= 100;;//Convert Death Rate to decimal form
+    newpop = (pop * ((1+bRate) * (1-dRate)));//Calculate New Population
+    newpop += .5f;//Correct Decimal Approximation
     return newpop;
 }
