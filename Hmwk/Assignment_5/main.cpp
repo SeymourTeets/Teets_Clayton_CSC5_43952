@@ -32,21 +32,21 @@ int main(int argc, char** argv) {
     //Repeat the menu
         do{
             //Display the selection
-                cout<<"*********************************************************"<<endl;
-                cout<<"*To solve problem 1,  type 0 (Markup)                   *"<<endl;
-                cout<<"*To solve problem 2,  type 1 (Celsius Temperature Table)*"<<endl;
-                cout<<"*To solve problem 3,  type 2 (Falling Distance)         *"<<endl;
-                cout<<"*To solve problem 4,  type 3 (Kinetic Energy)           *"<<endl;
-                cout<<"*To solve problem 5,  type 4 (Winning Division)         *"<<endl;
-                cout<<"*To solve problem 6,  type 5 (Safest Driving Area)      *"<<endl;
-                cout<<"*To solve problem  ,  type 6                            *"<<endl;
-                cout<<"*To solve problem  ,  type 7                            *"<<endl;
-                cout<<"*To solve problem 8,  type 8 (Present Value)            *"<<endl;
-                cout<<"*To solve problem 10, type 9 (Overloaded Hospital)      *"<<endl;
-                cout<<"*Type anything else to quit with no solutions.          *"<<endl;
-                cout<<"*********************************************************"<<endl;
+                cout<<"***********************************************************"<<endl;
+                cout<<"* To solve problem 1,  type 0 (Markup)                    *"<<endl;
+                cout<<"* To solve problem 2,  type 1 (Celsius Temperature Table) *"<<endl;
+                cout<<"* To solve problem 3,  type 2 (Falling Distance)          *"<<endl;
+                cout<<"* To solve problem 4,  type 3 (Kinetic Energy)            *"<<endl;
+                cout<<"* To solve problem 5,  type 4 (Winning Division)          *"<<endl;
+                cout<<"* To solve problem 6,  type 5 (Safest Driving Area)       *"<<endl;
+                cout<<"* To solve problem  ,  type 6                             *"<<endl;
+                cout<<"* To solve problem  ,  type 7                             *"<<endl;
+                cout<<"* To solve problem 8,  type 8 (Present Value)             *"<<endl;
+                cout<<"* To solve problem 10, type 9 (Overloaded Hospital)       *"<<endl;
+                cout<<"* Type anything else to quit with no solutions.           *"<<endl;
+                cout<<"***********************************************************"<<endl;
             //Read the choice
-                cin>>choice;
+                cout<<"Solve : "; cin>>choice;
                 cout<<endl;
                 cout<<endl;
             //Solve a problem that has been chosen.
@@ -206,19 +206,18 @@ void problem4(){
         cout<<endl;                                                                }
 
 //*******************         Problem 5           ********************/
-float getNAcc(float x) {
+int getNAcc(float x) {
     cout<<"Enter total number of reported accidents last year : ";
         cin>>x;//Validation Placeholder
         while (x<0) {cout<<"Please enter a non-negative value. ";
                      cin>>x;                                            }
     return x;   }
-float lowRegi(int n, int e, int s, int w, int c) {
-    int low;//Lowest Area
-    low = n;
-    if (e > low) {low = e;}
-    if (s > low) {low = s;}
-    if (w > low) {low = w;}
-    if (c > low) {low = c;}  
+int lowRegi(int n, int e, int s, int w, int c) {
+    int low = n;//Lowest Area
+    if (e < low) {low = e;}
+    if (s < low) {low = s;}
+    if (w < low) {low = w;}
+    if (c < low) {low = c;}  
     return low;     }
 void problem5(){
     //Declare Variables
@@ -244,7 +243,7 @@ void problem5(){
         c = getNAcc(x);
         cout<<endl;
     //Output Results
-        low == lowRegi(n, e, s, w, c);
+        low = lowRegi(n, e, s, w, c);
         if (low == n) {cout<<"The North region has the fewest reported accidents";
                        cout<<"totaling "<<n<<" in the last year"<<endl;           }
         if (low == e) {cout<<"The East region has the fewest reported accidents";
