@@ -167,17 +167,34 @@ float getSale(float x) {
     return x;   }
 void highSal(float ne, float nw, float se, float sw) {
     if      (ne<nw && nw<se && se<sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
+    else if (nw<ne && ne<se && se<sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
     else if (nw<se && se<ne && ne<sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
+    else if (se<nw && nw<ne && ne<sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
     else if (se<ne && ne<nw && nw<sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
+    else if (ne<se && se<nw && nw<sw) {cout<<"Southwest has the highest sales at $"<<sw<<endl;}
+    
     else if (sw<ne && ne<nw && nw<se) {cout<<"Southeast has the highest sales at $"<<se<<endl;}
+    else if (ne<sw && sw<nw && nw<se) {cout<<"Southeast has the highest sales at $"<<se<<endl;}
     else if (nw<sw && sw<ne && ne<se) {cout<<"Southeast has the highest sales at $"<<se<<endl;}
+    else if (sw<nw && nw<ne && ne<se) {cout<<"Southeast has the highest sales at $"<<se<<endl;}
     else if (ne<nw && nw<sw && sw<se) {cout<<"Southeast has the highest sales at $"<<se<<endl;} 
+    else if (nw<ne && ne<sw && sw<se) {cout<<"Southeast has the highest sales at $"<<se<<endl;}
+    
     else if (se<sw && sw<ne && ne<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}
+    else if (sw<se && se<ne && ne<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}
     else if (sw<ne && ne<se && se<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}
-    else if (ne<se && se<sw && sw<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}    
+    else if (ne<sw && sw<se && se<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}
+    else if (ne<se && se<sw && sw<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}
+    else if (se<ne && ne<sw && sw<nw) {cout<<"Northwest has the highest sales at $"<<nw<<endl;}
+
     else if (nw<se && se<sw && sw<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}
+    else if (se<nw && nw<sw && sw<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}
     else if (se<sw && sw<nw && nw<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}
-    else if (nw<nw && nw<se && se<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}     }
+    else if (sw<se && se<nw && nw<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}
+    else if (sw<nw && nw<se && se<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;}
+    else if (nw<sw && sw<se && se<ne) {cout<<"Northeast has the highest sales at $"<<ne<<endl;} 
+    
+    else {cout<<"You suck";}     }
 
 //*******************         Problem 5           ********************/
 void problem5(){
