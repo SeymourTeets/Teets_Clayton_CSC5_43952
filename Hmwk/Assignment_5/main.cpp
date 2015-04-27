@@ -38,10 +38,10 @@ int main(int argc, char** argv) {
                 cout<<"* To solve problem 4,  type 3 (Kinetic Energy)            *"<<endl;
                 cout<<"* To solve problem 5,  type 4 (Winning Division)          *"<<endl;
                 cout<<"* To solve problem 6,  type 5 (Safest Driving Area)       *"<<endl;
-                cout<<"* To solve problem  ,  type 6                             *"<<endl;
-                cout<<"* To solve problem  ,  type 7                             *"<<endl;
-                cout<<"* To solve problem 8,  type 8 (Present Value)             *"<<endl;
-                cout<<"* To solve problem 10, type 9 (Overloaded Hospital)       *"<<endl;
+                cout<<"* To solve problem 8,  type 6 (Star Search)               *"<<endl;
+                cout<<"* To solve problem 10, type 7 (Present Value)             *"<<endl;
+                cout<<"* To solve problem 11, type 8 (Stock Profit)              *"<<endl;
+                cout<<"* To solve problem 15, type 9 (Overloaded Hospital)       *"<<endl;
                 cout<<"* Type anything else to quit with no solutions.           *"<<endl;
                 cout<<"***********************************************************"<<endl;
             //Read the choice
@@ -266,7 +266,7 @@ void problem5(){
 float getJsco(float x) {
     cout<<"Enter your score (1-10) : ";
     cin>>x;//Validation Placeholder
-    while (x<0 || 10<x) {cout<<"        Please Enter a value 1-10 : ";
+    while (x<0 || 10<x) {cout<<"          Please Enter a value 1-10 : ";
                  cin>>x;                                            }
     return x;   }
 float calSco(float j1, float j2, float j3, float j4, float j5) {
@@ -318,18 +318,13 @@ void problem6(){
 }
 
 //*******************         Problem 7           ********************/
-void problem7(){
-    
-}
-
-//*******************         Problem 8           ********************/
 float pValue(int fBalnce, int nYears, float interest) {
     float add;//$'s to save
     interest /= 100;//Convert % to decimal form
     add = fBalnce / (pow((1+interest),nYears));//Calculate $'s to save
     return add;
 }
-void problem8(){
+void problem7(){
     //Declare Variables
         int nYears, fBalnce;
         float interest;
@@ -348,6 +343,42 @@ void problem8(){
         cout<<fixed<<setprecision(2)<<showpoint;
         cout<<pValue(fBalnce, nYears, interest)<<endl;
         cout<<endl;}
+
+//*******************         Problem 8           ********************/
+float sProfit(float ns, float sp, float sc, float pp, float pc) {
+    float profit;//Profit/Loss
+    profit = ((ns * sp) - sc) - ((ns * pp) + pc);
+    return profit;
+}
+void problem8(){
+    //Declare Variables
+        float profit,//Profit/Loss
+                  ns,//Number of Shares
+                  sp,//Sale Price Per Share
+                  sc,//Sales Commission Paid
+                  pp,//Purchase Price Per Share
+                  pc;//Purchase Commission Paid
+    //Prompt for Inputs
+        cout<<"Enter the following to calculate stock profit/loss."<<endl;
+        cout<<"Number of Shares         : ";
+        cin>>ns;
+        cout<<"Sale Price Per Share     : $";
+        cin>>sp;
+        cout<<"Sale Commission Paid     : $";
+        cin>>sc;
+        cout<<"Purchase Price Per Share : $";
+        cin>>pp;
+        cout<<"Purchase Commission Paid : $";
+        cin>>pc;
+        cout<<endl;
+    //Call Profit Function
+        profit = sProfit(ns, sp, sc, pp, pc);
+    //Output Profit/Loss
+        if (profit < 0) {profit *= -1;
+                         cout<<"Loss = -$"<<profit<<endl;}
+        else            {cout<<"Profit = $"<<profit<<endl;}
+        cout<<endl;
+}
 
 //*******************         Problem 9           ********************/
 int popSize(unsigned short pop, float bRate, float dRate) {
