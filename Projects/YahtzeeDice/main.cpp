@@ -43,6 +43,7 @@ int main(int argc, char** argv) {
     //Initiate Switch for chosen path
     switch(choice){
         case'h':
+            for (int u=1; u<=5; u++){
             cout<<"How many die would you like to hold?"<<endl;
             short x;
             cin>>x;
@@ -50,8 +51,9 @@ int main(int argc, char** argv) {
                 cout<<"Enter the die to reroll: ";
                 int c;
                 cin>>c;
-                do {die[c-1]=rand()%7;}
-                while (die[c-1]==0);
+                do {die[c]=rand()%7;}
+                while (die[c]==0);
+                cout<<die[c]<<endl;
             }
             //Output Die
             cout<<"Your role:"<<endl;
@@ -59,6 +61,7 @@ int main(int argc, char** argv) {
                 cout<<"Dice"<<i;
                 cout<<"  |"<<die[i]<<"|"<<endl;
             }
+    }
             break;
         case'H':
             break;
