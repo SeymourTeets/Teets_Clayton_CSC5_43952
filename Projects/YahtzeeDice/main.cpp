@@ -64,10 +64,51 @@ int main(int argc, char** argv) {
     }
             break;
         case'H':
+            for (int u=1; u<=5; u++){
+            cout<<"How many die would you like to hold?"<<endl;
+            short x;
+            cin>>x;
+            for (int i=1; i<=5-x; i++){
+                cout<<"Enter the die to reroll: ";
+                int c;
+                cin>>c;
+                do {die[c]=rand()%7;}
+                while (die[c]==0);
+                cout<<die[c]<<endl;
+            }
+            //Output Die
+            cout<<"Your role:"<<endl;
+            for (int i=1; i<6; i++){
+                cout<<"Dice"<<i;
+                cout<<"  |"<<die[i]<<"|"<<endl;
+            }
+    }            
             break;
         case'r':
+            //Loop for Die Roll
+            for (int i=1; i<6; i++){
+                do {die[i] = rand()%7;}
+                while (die[i]==0);
+            }
+            //Output Die
+            cout<<"Your role:"<<endl;
+            for (int i=1; i<6; i++){
+                cout<<"Dice"<<i;
+                cout<<"  |"<<die[i]<<"|"<<endl;
+            }
             break;
         case'R':
+            //Loop for Die Roll
+            for (int i=1; i<6; i++){
+                do {die[i] = rand()%7;}
+                while (die[i]==0);
+            }
+            //Output Die
+            cout<<"Your role:"<<endl;
+            for (int i=1; i<6; i++){
+                cout<<"Dice"<<i;
+                cout<<"  |"<<die[i]<<"|"<<endl;
+            }            
             break;
         case's':
             break;
