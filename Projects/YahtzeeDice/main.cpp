@@ -149,13 +149,12 @@ int main(int argc, char** argv) {
         cout<<"************************"<<endl;
         cout<<endl;
         
+        bool input = true;
+        do {
 	int option;
 	cout << "Option - ";
 	cin >> option;
 
-        bool input = true;
-        
-        do {
 	switch (option) {
 	case 1:
 		if (screSlt[0] == true) cout << "pick another category" << endl;
