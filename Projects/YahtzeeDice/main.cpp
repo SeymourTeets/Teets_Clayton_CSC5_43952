@@ -118,6 +118,7 @@ int main(int argc, char** argv) {
         }
         }while(count<=2);
         cout<<endl;
+        
         //Score Card
         cout<<"Let's SCORE!"<<endl;
         cout<<"\n\nScoring Options: Enter number for category to enter score.\n" << endl;
@@ -151,13 +152,14 @@ int main(int argc, char** argv) {
         
         bool input = true;
         do {
+        //Prompt for scoring options
 	int option;
 	cout << "Option - ";
 	cin >> option;
-
+        //Select option
 	switch (option) {
 	case 1:
-		if (screSlt[0] == true) cout << "pick another category" << endl;
+		if (screSlt[0] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==1) {aces += die[h];} }
@@ -166,7 +168,7 @@ int main(int argc, char** argv) {
                     input = false;      }
         break;
 	case 2:
-		if (screSlt[1] == true) cout << "pick another category" << endl;	
+		if (screSlt[1] == true) cout<<"Category filled, please choose another."<<endl;	
 		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==2) {twos += die[h];} }
@@ -175,7 +177,7 @@ int main(int argc, char** argv) {
                     input = false;      }
         break;
 	case 3:
-		if (screSlt[2] == true) cout << "pick another category" << endl;
+		if (screSlt[2] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==3) {threes += die[h];} }
@@ -184,7 +186,7 @@ int main(int argc, char** argv) {
                     input = false;      }
         break;
 	case 4:
-		if (screSlt[3] == true) cout << "pick another category" << endl;
+		if (screSlt[3] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==4) {fours += die[h];} }
@@ -193,7 +195,7 @@ int main(int argc, char** argv) {
                     input = false;      }
         break;
 	case 5:
-		if (screSlt[4] == true) cout << "pick another category" << endl;
+		if (screSlt[4] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==5) {fives += die[h];} }
@@ -202,7 +204,7 @@ int main(int argc, char** argv) {
                     input = false;      }
         break;
 	case 6:
-		if (screSlt[5] == true) cout << "pick another category" << endl;
+		if (screSlt[5] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==6) {sixes += die[h];} }
@@ -211,58 +213,58 @@ int main(int argc, char** argv) {
                     input = false;      }
         break;
 	case 7:
-		if (screSlt[6] == true) cout << "pick another category" << endl;
+		if (screSlt[6] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
-                    cout << "Enter 3 of a Kind score.\n";
-                    cin >> thKind;
+                    cout<<"Enter 3 of a Kind score.\n";
+                    cin>>thKind;
                     screSlt[6] = true;
                     input = false;      }
         break;
 	case 8:
-		if (screSlt[7] == true) cout << "pick another category" << endl;
+		if (screSlt[7] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
-                    cout << "Enter 4 of a Kind score.\n";
-                    cin >> foKind;
+                    cout<<"Enter 4 of a Kind score.\n";
+                    cin>>foKind;
                     screSlt[7] = true;
                     input = false;      }
         break;
 	case 9:
-		if (screSlt[8] == true) cout << "pick another category" << endl;
+		if (screSlt[8] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
-                    cout << "Enter Full House score.\n";
-                    cin >> fHouse;
+                    cout<<"Enter Full House score.\n";
+                    cin>>fHouse;
                     screSlt[8] = true;
                     input = false;      }
         break;
 	case 10:
-		if (screSlt[9] == true) cout << "pick another category" << endl;
+		if (screSlt[9] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
-                    cout << "Enter Small Straight score.\n";
-                    cin >> sStr8;
+                    cout<<"Enter Small Straight score.\n";
+                    cin>>sStr8;
                     screSlt[9] = true;
                     input = false;      }
         break;
 	case 11:
-		if (screSlt[10] == true) cout << "pick another category" << endl;
+		if (screSlt[10] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
-                    cout << "Enter Large Straight score.\n";
-                    cin >> lStr8;
+                    cout<<"Enter Large Straight score.\n";
+                    cin>>lStr8;
                     screSlt[10] = true;	
                     input = false;      }
         break;
 	case 12:
-		if (screSlt[11] == true) cout << "pick another category" << endl;
+		if (screSlt[11] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
-                    cout << "Enter Yahtzee score.\n";
-                    cin >> yahtzee;
+                    cout<<"Enter Yahtzee score.\n";
+                    cin>>yahtzee;
                     screSlt[11] = true;	
                     input = false;      }
         break;
 	case 13:
-		if (screSlt[12] == true) cout << "pick another category" << endl;
+		if (screSlt[12] == true) cout<<"Category filled, please choose another."<<endl;
 		else {
-                    cout << "Enter Chance score.\n";
-                    cin >> chance;
+                    for (int h=1; h<=5; h++) {chance += die[h];}
+                    cout<<"Chance score = "<<chance<<endl;
                     screSlt[12] = true;	
                     input = false;      }
         break;
