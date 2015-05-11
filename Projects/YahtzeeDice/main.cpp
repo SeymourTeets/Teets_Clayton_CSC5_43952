@@ -55,6 +55,7 @@ int main(int argc, char** argv) {
             count = 1;
     //Add to round counter
             round += 1;
+            cout<<"(ROUND "<<round<<")"<<endl<<endl;
     //Loop for Die Roll
         for (int i=1; i<6; i++){
         die[i] = rand()%6+1;
@@ -152,111 +153,164 @@ int main(int argc, char** argv) {
 	cout << "Option - ";
 	cin >> option;
 
+        bool input = true;
+        
+        do {
 	switch (option) {
 	case 1:
 		if (screSlt[0] == true) cout << "pick another category" << endl;
-		else
+		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==1) {aces += die[h];} }
                     cout<<"Aces score = "<<aces<<endl;
                     screSlt[0] = true;
+                    input = false;      }
         break;
 	case 2:
 		if (screSlt[1] == true) cout << "pick another category" << endl;	
-		else
+		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==2) {twos += die[h];} }
                     cout<<"Twos score = "<<twos<<endl;
                     screSlt[1] = true;
+                    input = false;      }
         break;
 	case 3:
 		if (screSlt[2] == true) cout << "pick another category" << endl;
-		else
+		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==3) {threes += die[h];} }
                     cout<<"Threes score = "<<threes<<endl;
                     screSlt[2] = true;
+                    input = false;      }
         break;
 	case 4:
 		if (screSlt[3] == true) cout << "pick another category" << endl;
-		else
+		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==4) {fours += die[h];} }
                     cout<<"Fours score = "<<fours<<endl;
                     screSlt[3] = true;
+                    input = false;      }
         break;
 	case 5:
 		if (screSlt[4] == true) cout << "pick another category" << endl;
-		else
+		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==5) {fives += die[h];} }
                     cout<<"Fives score = "<<fives<<endl;
                     screSlt[4] = true;
+                    input = false;      }
         break;
 	case 6:
 		if (screSlt[5] == true) cout << "pick another category" << endl;
-		else
+		else {
                     for (int h=1; h<=5; h++){
                         if (die[h]==6) {sixes += die[h];} }
                     cout<<"Sixes score = "<<sixes<<endl;
-                    screSlt[5] = true;		
+                    screSlt[5] = true;	
+                    input = false;      }
         break;
 	case 7:
 		if (screSlt[6] == true) cout << "pick another category" << endl;
-		else
+		else {
                     cout << "Enter 3 of a Kind score.\n";
                     cin >> thKind;
                     screSlt[6] = true;
+                    input = false;      }
         break;
 	case 8:
 		if (screSlt[7] == true) cout << "pick another category" << endl;
-		else
+		else {
                     cout << "Enter 4 of a Kind score.\n";
                     cin >> foKind;
-                    screSlt[7] = true;	
+                    screSlt[7] = true;
+                    input = false;      }
         break;
 	case 9:
 		if (screSlt[8] == true) cout << "pick another category" << endl;
-		else
+		else {
                     cout << "Enter Full House score.\n";
                     cin >> fHouse;
                     screSlt[8] = true;
+                    input = false;      }
         break;
 	case 10:
 		if (screSlt[9] == true) cout << "pick another category" << endl;
-		else
+		else {
                     cout << "Enter Small Straight score.\n";
                     cin >> sStr8;
                     screSlt[9] = true;
+                    input = false;      }
         break;
 	case 11:
 		if (screSlt[10] == true) cout << "pick another category" << endl;
-		else
+		else {
                     cout << "Enter Large Straight score.\n";
                     cin >> lStr8;
                     screSlt[10] = true;	
+                    input = false;      }
         break;
 	case 12:
 		if (screSlt[11] == true) cout << "pick another category" << endl;
-		else
+		else {
                     cout << "Enter Yahtzee score.\n";
                     cin >> yahtzee;
-                    screSlt[11] = true;		
+                    screSlt[11] = true;	
+                    input = false;      }
         break;
 	case 13:
 		if (screSlt[12] == true) cout << "pick another category" << endl;
-		else
+		else {
                     cout << "Enter Chance score.\n";
                     cin >> chance;
                     screSlt[12] = true;	
+                    input = false;      }
         break;
 	default:
 		cout << "Illegal choice made. Please choose another." << endl;
 	}
+        }while (input);
         cout<<endl;
         uTotal = aces + twos + threes + fours + fives + sixes;
         lTotal = thKind + foKind + fHouse + sStr8 + lStr8 + yahtzee + chance;
+        //Output updated score card
+        cout<<"  Updated Score Card"<<endl;
+        cout<<"************************"<<endl;
+        cout<<"*****Upper Section******"<<endl;
+        cout<<"************************"<<endl;
+        cout<<"*1 *     Ones      *"<<setw(3)<<aces<<"*"<<endl;
+        cout<<"*2 *     Twos      *"<<setw(3)<<twos<<"*"<<endl;
+        cout<<"*3 *     Threes    *"<<setw(3)<<threes<<"*"<<endl;
+        cout<<"*4 *     Fours     *"<<setw(3)<<fours<<"*"<<endl;
+        cout<<"*5 *     Fives     *"<<setw(3)<<fives<<"*"<<endl;
+        cout<<"*6 *     Sixes     *"<<setw(3)<<sixes<<"*"<<endl;
+        cout<<"****     Total     *"<<setw(3)<<uTotal<<"*"<<endl;
+        cout<<"************************"<<endl;
+        cout<<"*****Lower Section******"<<endl;
+        cout<<"************************"<<endl;
+        cout<<"*7 * Four of a Kind*"<<setw(3)<<foKind<<"*"<<endl;
+        cout<<"*8 *Three of a Kind*"<<setw(3)<<thKind<<"*"<<endl;
+        cout<<"*9 *   Full House  *"<<setw(3)<<fHouse<<"*"<<endl;
+        cout<<"*10* Small Straight*"<<setw(3)<<sStr8<<"*"<<endl;
+        cout<<"*11* Large Straight*"<<setw(3)<<lStr8<<"*"<<endl;
+        cout<<"*12*    YAHTZEE    *"<<setw(3)<<yahtzee<<"*"<<endl;
+        cout<<"*13*    Chance     *"<<setw(3)<<chance<<"*"<<endl;
+        cout<<"****    Total      *"<<setw(3)<<lTotal<<"*"<<endl;
+        cout<<"************************"<<endl;
+        cout<<"*                  *****"<<endl;
+        cout<<"*   GRAND TOTAL    *"<<setw(3)<<gTotal<<"*"<<endl;
+        cout<<"*                  *****"<<endl;
+        cout<<"************************"<<endl;
+        cout<<endl;
         }
+        //Finalize scoring and output results
+            if (uTotal>=63) {uTotal += 35;
+                             cout<<"You received a 35 point bonus for having a";
+                             cout<<"n Upper Score of 63 or greater giving you a";
+                             cout<<" new Upper Score of "<<uTotal<<endl<<endl;  }
+            gTotal = uTotal + lTotal;
+            cout<<"The game is complete and your Grand Total = "<<gTotal<<endl;
     //Executio Disicere
     return 0;
 }
