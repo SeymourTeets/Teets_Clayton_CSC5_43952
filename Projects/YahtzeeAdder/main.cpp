@@ -1,14 +1,12 @@
 /* 
  * File       : main.cpp
  * Author     : Clayton Teets
- * Created on : May 7, 2015, 3:12 PM
+ * Created on : May 9, 2015, 5:40 PM
  * Purpose    : 
  */
 //System Libraries
 #include <iostream> //Input/Output Library
 #include <iomanip>  //Output Formatting
-#include <ctime>
-#include <cstdlib>
 using namespace std;
 //User Libraries
 
@@ -19,9 +17,7 @@ using namespace std;
 //Executio Incipio
 
 int main(int argc, char** argv) {
-    //Declare Variables
 
     //Executio Disicere
     return 0;
 }
-
