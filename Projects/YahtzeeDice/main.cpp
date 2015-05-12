@@ -201,9 +201,10 @@ int main(int argc, char** argv) {
                         if (aces == 0) {
                             q = prompt();
                             if (!q) {
-                            screSlt[0] = false;
-                            input = true;
+                                screSlt[0] = false;
+                                input = true;
                             }
+                        }
                     }
                     break;
                 case 2:
@@ -220,9 +221,10 @@ int main(int argc, char** argv) {
                         if (twos == 0) {
                             q = prompt();
                             if (!q) {
-                            screSlt[1] = false;
-                            input = true;
+                                screSlt[1] = false;
+                                input = true;
                             }
+                        }
                     }
                     break;
                 case 3:
@@ -239,9 +241,10 @@ int main(int argc, char** argv) {
                         if (threes == 0) {
                             q = prompt();
                             if (!q) {
-                            screSlt[2] = false;
-                            input = true;
+                                screSlt[2] = false;
+                                input = true;
                             }
+                        }
                     }
                     break;
                 case 4:
@@ -258,9 +261,10 @@ int main(int argc, char** argv) {
                         if (fours == 0) {
                             q = prompt();
                             if (!q) {
-                            screSlt[3] = false;
-                            input = true;
+                                screSlt[3] = false;
+                                input = true;
                             }
+                        }
                     }
                     break;
                 case 5:
@@ -277,9 +281,10 @@ int main(int argc, char** argv) {
                         if (fives == 0) {
                             q = prompt();
                             if (!q) {
-                            screSlt[4] = false;
-                            input = true;
+                                screSlt[4] = false;
+                                input = true;
                             }
+                        }
                     }
                     break;
                 case 6:
@@ -296,8 +301,8 @@ int main(int argc, char** argv) {
                         if (sixes == 0) {
                             q = prompt();
                             if (!q) {
-                            screSlt[5] = false;
-                            input = true;
+                                screSlt[5] = false;
+                                input = true;
                             }
                         }
                     }
@@ -474,7 +479,7 @@ bool prompt() {
     //Input Validation
     do {
         //Prompt for input
-        cout << "You do not have any die for this category, would you like to scratch? (Y/N) " ;
+        cout << "You do not have any die for this category, would you like to scratch? (Y/N) ";
         cin>>q;
         //Switch
         switch (q) {
