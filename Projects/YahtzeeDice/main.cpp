@@ -1,8 +1,8 @@
-/* 
+/*
  * File       : main.cpp
  * Author     : Clayton Teets
  * Created on : May 4, 2015, 4:25 PM
- * Purpose    : 
+ * Purpose    :
  */
 //System Libraries
 #include <iostream> //Input/Output Library
@@ -24,24 +24,16 @@ int compare(const void * a, const void * b) {
 //Executio Incipio
 
 int main(int argc, char** argv) {
-    cout << "************************************************************************************************************************************************" << endl;
-    cout << "* YYYYYYY       YYYYYYY               hhhhhhh                     tttt                                                                    !!!  *" << endl;
-    cout << "* Y:::::Y       Y:::::Y               h:::::h                  ttt:::t                                                                   !!:!! *" << endl;
-    cout << "* Y:::::Y       Y:::::Y               h:::::h                  t:::::t                                                                   !:::! *" << endl;
-    cout << "* Y::::::Y     Y::::::Y               h:::::h                  t:::::t                                                                   !:::! *" << endl;
-    cout << "* YYY:::::Y   Y:::::YYYaaaaaaaaaaaaa   h::::h hhhhh      ttttttt:::::ttttttt    zzzzzzzzzzzzzzzzz    eeeeeeeeeeee        eeeeeeeeeeee    !:::! *" << endl;
-    cout << "*    Y:::::Y Y:::::Y   a::::::::::::a  h::::hh:::::hhh   t:::::::::::::::::t    z:::::::::::::::z  ee::::::::::::ee    ee::::::::::::ee  !:::! *" << endl;
-    cout << "*     Y:::::Y:::::Y    aaaaaaaaa:::::a h::::::::::::::hh t:::::::::::::::::t    z::::::::::::::z  e::::::eeeee:::::ee e::::::eeeee:::::ee!:::! *" << endl;
-    cout << "*      Y:::::::::Y              a::::a h:::::::hhh::::::htttttt:::::::tttttt    zzzzzzzz::::::z  e::::::e     e:::::ee::::::e     e:::::e!:::! *" << endl;
-    cout << "*       Y:::::::Y        aaaaaaa:::::a h::::::h   h::::::h     t:::::t                z::::::z   e:::::::eeeee::::::ee:::::::eeeee::::::e!:::! *" << endl;
-    cout << "*        Y:::::Y       aa::::::::::::a h:::::h     h:::::h     t:::::t               z::::::z    e:::::::::::::::::e e:::::::::::::::::e !:::! *" << endl;
-    cout << "*        Y:::::Y      a::::aaaa::::::a h:::::h     h:::::h     t:::::t              z::::::z     e::::::eeeeeeeeeee  e::::::eeeeeeeeeee  !!:!! *" << endl;
-    cout << "*        Y:::::Y     a::::a    a:::::a h:::::h     h:::::h     t:::::t    tttttt   z::::::z      e:::::::e           e:::::::e            !!!  *" << endl;
-    cout << "*        Y:::::Y     a::::a    a:::::a h:::::h     h:::::h     t::::::tttt:::::t  z::::::zzzzzzzze::::::::e          e::::::::e                *" << endl;
-    cout << "*     YYYY:::::YYYY  a:::::aaaa::::::a h:::::h     h:::::h     tt::::::::::::::t z::::::::::::::z e::::::::eeeeeeee   e::::::::eeeeeeee   !!!  *" << endl;
-    cout << "*     Y:::::::::::Y   a::::::::::aa:::ah:::::h     h:::::h       tt:::::::::::ttz:::::::::::::::z  ee:::::::::::::e    ee:::::::::::::e  !!:!! *" << endl;
-    cout << "*     YYYYYYYYYYYYY    aaaaaaaaaa  aaaahhhhhhh     hhhhhhh         ttttttttttt  zzzzzzzzzzzzzzzzz    eeeeeeeeeeeeee      eeeeeeeeeeeeee   !!!  *" << endl;
-    cout << "************************************************************************************************************************************************" << endl;
+    cout << "********************************************************************" << endl;
+    cout << "* Y88b   d88P       888      888                               888 *" << endl;
+    cout << "*  Y88b d88P        888      888                               888 *" << endl;
+    cout << "*   Y88o88P         888      888                               888 *" << endl;
+    cout << "*    Y888P  8888b.  88888b.  888888 88888888  .d88b.   .d88b.  888 *" << endl;
+    cout << "*     888      '88b 888 '88b 888       d88P  d8P  Y8b d8P  Y8b 888 *" << endl;
+    cout << "*     888  .d888888 888  888 888      d88P   88888888 88888888 Y8P *" << endl;
+    cout << "*     888  888  888 888  888 Y88b.   d88P    Y8b.     Y8b.      '  *" << endl;
+    cout << "*     888  'Y888888 888  888  'Y888 88888888  'Y8888   'Y8888  888 *" << endl;
+    cout << "********************************************************************" << endl;
     cout << endl << endl;
     //Initialize the random number seed
     srand(static_cast<unsigned int> (time(0)));
@@ -53,7 +45,7 @@ int main(int argc, char** argv) {
     short x; //Die to hold
     short count = 1; //Amount of re-rolls
     short maxrnds = 13, //Maximum rounds per game
-            round; //Current round
+            round = 0; //Current round
     //For scoring validation
     bool screSlt[12]; //Score slot
     for (int i = 0; i <= 12; i++) {
@@ -91,31 +83,34 @@ int main(int argc, char** argv) {
         cout << "Your role:" << endl;
         for (int i = 1; i < 6; i++) {
             cout << "Dice " << i;
-            cout << "  |" << die[i] << "|" << endl;
+            cout << " - |" << die[i] << "|" << endl;
         }
         //Ask if they would like to hold any die?
         cout << endl;
         do {
             cout << "Would you like to hold, roll again, or score? (H/R/S) ";
             cin>>choice;
+            cout << endl;
             //Initiate Switch for chosen path
             switch (choice) {
                 case'h':
                 case'H':
-                    cout << "How many die would you like to hold?" << endl;
+                    cout << "How many die would you like to hold? ";
                     cin>>x;
+                    cout << endl;
                     for (int i = 1; i <= 5 - x; i++) {
                         cout << "Enter the die to re roll: ";
                         int c;
                         cin>>c;
                         die[c] = rand() % 6 + 1;
-                        cout << die[c] << endl;
+                        cout << "Dice " << c;
+                        cout << " - |" << die[c] << "|" << endl << endl;
                     }
                     //Output Die
                     cout << "Your role:" << endl;
                     for (int i = 1; i < 6; i++) {
                         cout << "Dice " << i;
-                        cout << "  |" << die[i] << "|" << endl;
+                        cout << " - |" << die[i] << "|" << endl;
                     }
                     cout << endl;
                     count += 1;
@@ -132,7 +127,7 @@ int main(int argc, char** argv) {
                     cout << "Your role:" << endl;
                     for (int i = 1; i < 6; i++) {
                         cout << "Dice " << i;
-                        cout << "  |" << die[i] << "|" << endl;
+                        cout << " - |" << die[i] << "|" << endl;
                     }
                     cout << endl;
                     count += 1;
@@ -146,8 +141,10 @@ int main(int argc, char** argv) {
             }
         } while (count <= 2);
         cout << endl;
+
         //Sort Die
         qsort(die, 6, sizeof (int), compare);
+
         //Output Score Card
         cout << "Let's SCORE!" << endl;
         cout << "\n\nScoring Options: Enter number for category to enter score.\n" << endl;
@@ -173,9 +170,9 @@ int main(int argc, char** argv) {
         cout << "*13*____Chance_____*" << setw(3) << chance << "*" << endl;
         cout << "****     Total     *" << setw(3) << lTotal << "*" << endl;
         cout << "************************" << endl;
-        cout << "*                  *****" << endl;
-        cout << "*   GRAND TOTAL    *" << setw(3) << gTotal << "*" << endl;
-        cout << "*                  *****" << endl;
+        cout << "************************" << endl;
+        cout << "****  GRAND TOTAL  *" << setw(3) << gTotal << "*" << endl;
+        cout << "************************" << endl;
         cout << "************************" << endl;
         cout << endl;
 
@@ -185,6 +182,7 @@ int main(int argc, char** argv) {
             int option;
             cout << "Option - ";
             cin >> option;
+            cout << endl;
             //Select option
             switch (option) {
                 case 1:
@@ -312,17 +310,27 @@ int main(int argc, char** argv) {
                     else {
                         if (die[1] == die[2] && die[2] == die[3]) {
                             thKind = die[1] + die[2] + die[3];
+                            cout << "3 of a Kind Score = " << thKind << endl;
                             screSlt[6] = true;
                             input = false;
                         } else if (die[2] == die[3] && die[3] == die[4]) {
                             thKind = die[2] + die[3] + die[4];
+                            cout << "3 of a Kind Score = " << thKind << endl;
                             screSlt[6] = true;
                             input = false;
                         } else if (die[3] == die[4] && die[4] == die[5]) {
                             thKind = die[3] + die[4] + die[5];
+                            cout << "3 of a Kind Score = " << thKind << endl;
                             screSlt[6] = true;
                             input = false;
-                        } else cout << "You do not have 3 of a kind, choose another category" << endl;
+                        } else {
+                            cout << "You do not have 3 of a kind, choose another category" << endl;
+                            q = prompt();
+                            if (q) {
+                                screSlt[5] = true;
+                                input = false;
+                            }
+                        }
                     }
                     break;
                 case 8:
@@ -330,13 +338,22 @@ int main(int argc, char** argv) {
                     else {
                         if (die[1] == die[2] && die[2] == die[3] && die[3] == die[4]) {
                             foKind = die[1] + die[2] + die[3] + die[4];
+                            cout << "4 of a Kind Score = " << foKind << endl;
                             screSlt[7] = true;
                             input = false;
                         } else if (die[2] == die[3] && die[3] == die[4] && die[4] == die[5]) {
                             foKind = die[2] + die[3] + die[4] + die[5];
+                            cout << "4 of a Kind Score = " << foKind << endl;
                             screSlt[7] = true;
                             input = false;
-                        } else cout << "You do not have 4 of a kind, choose another category" << endl;
+                        } else {
+                            cout << "You do not have 4 of a kind, choose another category" << endl;
+                            q = prompt();
+                            if (q) {
+                                screSlt[5] = true;
+                                input = false;
+                            }
+                        }
                     }
                     break;
                 case 9:
@@ -348,9 +365,17 @@ int main(int argc, char** argv) {
                             input = false;
                         } else if (die[1] == die[2] && die[2] == die[3] && die[4] == die[5]) {
                             fHouse = 25;
+                            cout << "Full House = " << fHouse << endl;
                             screSlt[8] = true;
                             input = false;
-                        } else cout << "You do not have a full house, choose another category" << endl;
+                        } else {
+                            cout << "You do not have a full house, choose another category" << endl;
+                            q = prompt();
+                            if (q) {
+                                screSlt[5] = true;
+                                input = false;
+                            }
+                        }
                     }
 
                     break;
@@ -368,16 +393,32 @@ int main(int argc, char** argv) {
                     else {
                         if (die[1] == die[2] + 1 && die[2] == die[3] + 1 && die[3] == die[4] + 1 && die[4] == die[5] + 1) {
                             lStr8 = 40;
+                            cout << "Large Straight Score = " << lStr8 << endl;
                             screSlt[10] = true;
                             input = false;
-                        } else cout << "You do not have a large straight, choose another category" << endl;
+                        } else {
+                            cout << "You do not have a large straight, choose another category" << endl;
+                            q = prompt();
+                            if (q) {
+                                screSlt[5] = true;
+                                input = false;
+                            }
+                        }
                     }
                     break;
                 case 12:
                     if (die[1] == die[2] && die[2] == die[3] && die[4] == die[5] && die[5] == die[6]) {
                         yahtzee = 50;
+                        cout << "Yahtzee Score = " << yahtzee << endl;
                         input = false;
-                    } else cout << "You do not have a yahtzee, choose another category" << endl;
+                    } else {
+                        cout << "You do not have a yahtzee, choose another category" << endl;
+                        q = prompt();
+                        if (q) {
+                            screSlt[5] = true;
+                            input = false;
+                        }
+                    }
                     break;
                 case 13:
                     if (screSlt[12] == true) cout << "Category filled, please choose another." << endl;
@@ -391,10 +432,11 @@ int main(int argc, char** argv) {
                     }
                     break;
                 default:
-                    cout << "Illegal choice made. Please choose another." << endl;
+                    cout << "Illegal choice made, please choose another." << endl;
             }
         } while (input);
         cout << endl;
+
         //Add upper and lower totals
         uTotal = aces + twos + threes + fours + fives + sixes;
         lTotal = thKind + foKind + fHouse + sStr8 + lStr8 + yahtzee + chance;
@@ -422,12 +464,13 @@ int main(int argc, char** argv) {
         cout << "*13*____Chance_____*" << setw(3) << chance << "*" << endl;
         cout << "****     Total     *" << setw(3) << lTotal << "*" << endl;
         cout << "************************" << endl;
-        cout << "*                  *****" << endl;
-        cout << "*   GRAND TOTAL    *" << setw(3) << gTotal << "*" << endl;
-        cout << "*                  *****" << endl;
+        cout << "************************" << endl;
+        cout << "****  GRAND TOTAL  *" << setw(3) << gTotal << "*" << endl;
+        cout << "************************" << endl;
         cout << "************************" << endl;
         cout << endl;
     }
+
     //Finalize scoring and output results
     if (uTotal >= 63) {
         uTotal += 35;
@@ -460,11 +503,12 @@ int main(int argc, char** argv) {
     cout << "*13*____Chance_____*" << setw(3) << chance << "*" << endl;
     cout << "****     Total     *" << setw(3) << lTotal << "*" << endl;
     cout << "************************" << endl;
-    cout << "*                  *****" << endl;
-    cout << "*   GRAND TOTAL    *" << setw(3) << gTotal << "*" << endl;
-    cout << "*                  *****" << endl;
+    cout << "************************" << endl;
+    cout << "****  GRAND TOTAL  *" << setw(3) << gTotal << "*" << endl;
+    cout << "************************" << endl;
     cout << "************************" << endl;
     cout << endl;
+    cout << "Thanks for playing!" << endl;
     //Executio Disicere
     return 0;
 }
