@@ -69,6 +69,7 @@ int main(int argc, char** argv) {
     short uTotal = 0, //Upper total
             lTotal = 0, //Lower total
             gTotal = 0; //Grand total
+    
     while (round < maxrnds) {
         //Initiate roll counter
         count = 1;
@@ -88,7 +89,7 @@ int main(int argc, char** argv) {
         //Ask if they would like to hold any die?
         cout << endl;
         do {
-            cout << "Would you like to hold, roll again, or score? (H/R/S) ";
+            cout << "Would you like to hold, roll again, or keep? (H/R/K) ";
             cin>>choice;
             cout << endl;
             //Initiate Switch for chosen path
@@ -132,12 +133,12 @@ int main(int argc, char** argv) {
                     cout << endl;
                     count += 1;
                     break;
-                case's':
-                case'S':
+                case'k':
+                case'K':
                     count += 3;
                     break;
                 default:
-                    cout << "You have broken my game" << endl;
+                    cout << "You have broken my game" << endl << endl;
             }
         } while (count <= 2);
         cout << endl;
@@ -148,44 +149,44 @@ int main(int argc, char** argv) {
         //Output Score Card
         cout << "Let's SCORE!" << endl;
         cout << "\n\nScoring Options: Enter number for category to enter score.\n" << endl;
-        cout << "************************" << endl;
-        cout << "*****Upper Section******" << endl;
-        cout << "************************" << endl;
-        cout << "*1 *     Ones      *" << setw(3) << aces << "*" << endl;
-        cout << "*2 *     Twos      *" << setw(3) << twos << "*" << endl;
-        cout << "*3 *     Threes    *" << setw(3) << threes << "*" << endl;
-        cout << "*4 *     Fours     *" << setw(3) << fours << "*" << endl;
-        cout << "*5 *     Fives     *" << setw(3) << fives << "*" << endl;
-        cout << "*6 *_____Sixes_____*" << setw(3) << sixes << "*" << endl;
-        cout << "****     Total     *" << setw(3) << uTotal << "*" << endl;
-        cout << "************************" << endl;
-        cout << "*****Lower Section******" << endl;
-        cout << "************************" << endl;
-        cout << "*7 * Four of a Kind*" << setw(3) << foKind << "*" << endl;
-        cout << "*8 *Three of a Kind*" << setw(3) << thKind << "*" << endl;
-        cout << "*9 *   Full House  *" << setw(3) << fHouse << "*" << endl;
-        cout << "*10* Small Straight*" << setw(3) << sStr8 << "*" << endl;
-        cout << "*11* Large Straight*" << setw(3) << lStr8 << "*" << endl;
-        cout << "*12*    YAHTZEE    *" << setw(3) << yahtzee << "*" << endl;
-        cout << "*13*____Chance_____*" << setw(3) << chance << "*" << endl;
-        cout << "****     Total     *" << setw(3) << lTotal << "*" << endl;
-        cout << "************************" << endl;
-        cout << "************************" << endl;
-        cout << "****  GRAND TOTAL  *" << setw(3) << gTotal << "*" << endl;
-        cout << "************************" << endl;
-        cout << "************************" << endl;
+        cout << "*************************" << endl;
+        cout << "******Upper Section******" << endl;
+        cout << "*************************" << endl;
+        cout << "* 1 *     Ones      *" << setw(3) << aces << "*" << endl;
+        cout << "* 2 *     Twos      *" << setw(3) << twos << "*" << endl;
+        cout << "* 3 *     Threes    *" << setw(3) << threes << "*" << endl;
+        cout << "* 4 *     Fours     *" << setw(3) << fours << "*" << endl;
+        cout << "* 5 *     Fives     *" << setw(3) << fives << "*" << endl;
+        cout << "* 6 *_____Sixes_____*" << setw(3) << sixes << "*" << endl;
+        cout << "*****     Total     *" << setw(3) << uTotal << "*" << endl;
+        cout << "*************************" << endl;
+        cout << "******Lower Section******" << endl;
+        cout << "*************************" << endl;
+        cout << "* F * Four of a Kind*" << setw(3) << foKind << "*" << endl;
+        cout << "* T *Three of a Kind*" << setw(3) << thKind << "*" << endl;
+        cout << "* H *   Full House  *" << setw(3) << fHouse << "*" << endl;
+        cout << "* S * Small Straight*" << setw(3) << sStr8 << "*" << endl;
+        cout << "* L * Large Straight*" << setw(3) << lStr8 << "*" << endl;
+        cout << "* Y *    YAHTZEE    *" << setw(3) << yahtzee << "*" << endl;
+        cout << "* C *____Chance_____*" << setw(3) << chance << "*" << endl;
+        cout << "*****     Total     *" << setw(3) << lTotal << "*" << endl;
+        cout << "*************************" << endl;
+        cout << "*************************" << endl;
+        cout << "*****  GRAND TOTAL  *" << setw(3) << gTotal << "*" << endl;
+        cout << "*************************" << endl;
+        cout << "*************************" << endl;
         cout << endl;
 
         bool input = true;
         do {
             //Prompt for scoring options
-            int option;
+            char option;
             cout << "Option - ";
             cin >> option;
             cout << endl;
             //Select option
             switch (option) {
-                case 1:
+                case '1':
                     if (screSlt[0] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         for (int h = 1; h <= 5; h++) {
@@ -205,7 +206,7 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 2:
+                case '2':
                     if (screSlt[1] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         for (int h = 1; h <= 5; h++) {
@@ -225,7 +226,7 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 3:
+                case '3':
                     if (screSlt[2] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         for (int h = 1; h <= 5; h++) {
@@ -245,7 +246,7 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 4:
+                case '4':
                     if (screSlt[3] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         for (int h = 1; h <= 5; h++) {
@@ -265,7 +266,7 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 5:
+                case '5':
                     if (screSlt[4] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         for (int h = 1; h <= 5; h++) {
@@ -285,7 +286,7 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 6:
+                case '6':
                     if (screSlt[5] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         for (int h = 1; h <= 5; h++) {
@@ -305,7 +306,8 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 7:
+                case 't':
+                case 'T':
                     if (screSlt[6] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         if (die[1] == die[2] && die[2] == die[3]) {
@@ -333,7 +335,8 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 8:
+                case 'f':
+                case 'F':
                     if (screSlt[7] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         if (die[1] == die[2] && die[2] == die[3] && die[3] == die[4]) {
@@ -356,7 +359,8 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 9:
+                case 'h':
+                case 'H':
                     if (screSlt[8] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         if (die[1] == die[2] && die[3] == die[4] && die[4] == die[5]) {
@@ -379,7 +383,8 @@ int main(int argc, char** argv) {
                     }
 
                     break;
-                case 10:
+                case 's':
+                case 'S':
                     if (screSlt[9] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         cout << "Enter Small Straight score.\n";
@@ -388,7 +393,8 @@ int main(int argc, char** argv) {
                         input = false;
                     }
                     break;
-                case 11:
+                case 'l':
+                case 'L':
                     if (screSlt[10] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         if (die[1] == die[2] + 1 && die[2] == die[3] + 1 && die[3] == die[4] + 1 && die[4] == die[5] + 1) {
@@ -406,7 +412,8 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 12:
+                case 'y':
+                case 'Y':
                     if (die[1] == die[2] && die[2] == die[3] && die[4] == die[5] && die[5] == die[6]) {
                         yahtzee = 50;
                         cout << "Yahtzee Score = " << yahtzee << endl;
@@ -420,7 +427,8 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 13:
+                case 'c':
+                case 'C':
                     if (screSlt[12] == true) cout << "Category filled, please choose another." << endl;
                     else {
                         for (int h = 1; h <= 5; h++) {
@@ -432,7 +440,7 @@ int main(int argc, char** argv) {
                     }
                     break;
                 default:
-                    cout << "Illegal choice made, please choose another." << endl;
+                    cout << "Illegal choice made, please choose another." << endl << endl;
             }
         } while (input);
         cout << endl;
@@ -481,32 +489,32 @@ int main(int argc, char** argv) {
     gTotal = uTotal + lTotal;
     cout << "The game is complete and your Grand Total = " << gTotal << endl << endl;
     cout << "    Final Score Card" << endl;
-    cout << "************************" << endl;
-    cout << "*****Upper Section******" << endl;
-    cout << "************************" << endl;
-    cout << "*1 *     Ones      *" << setw(3) << aces << "*" << endl;
-    cout << "*2 *     Twos      *" << setw(3) << twos << "*" << endl;
-    cout << "*3 *     Threes    *" << setw(3) << threes << "*" << endl;
-    cout << "*4 *     Fours     *" << setw(3) << fours << "*" << endl;
-    cout << "*5 *     Fives     *" << setw(3) << fives << "*" << endl;
-    cout << "*6 *_____Sixes_____*" << setw(3) << sixes << "*" << endl;
-    cout << "****     Total     *" << setw(3) << uTotal << "*" << endl;
-    cout << "************************" << endl;
-    cout << "*****Lower Section******" << endl;
-    cout << "************************" << endl;
-    cout << "*7 * Four of a Kind*" << setw(3) << foKind << "*" << endl;
-    cout << "*8 *Three of a Kind*" << setw(3) << thKind << "*" << endl;
-    cout << "*9 *   Full House  *" << setw(3) << fHouse << "*" << endl;
-    cout << "*10* Small Straight*" << setw(3) << sStr8 << "*" << endl;
-    cout << "*11* Large Straight*" << setw(3) << lStr8 << "*" << endl;
-    cout << "*12*    YAHTZEE    *" << setw(3) << yahtzee << "*" << endl;
-    cout << "*13*____Chance_____*" << setw(3) << chance << "*" << endl;
-    cout << "****     Total     *" << setw(3) << lTotal << "*" << endl;
-    cout << "************************" << endl;
-    cout << "************************" << endl;
-    cout << "****  GRAND TOTAL  *" << setw(3) << gTotal << "*" << endl;
-    cout << "************************" << endl;
-    cout << "************************" << endl;
+    cout << "*************************" << endl;
+    cout << "******Upper Section******" << endl;
+    cout << "*************************" << endl;
+    cout << "* 1 *     Ones      *" << setw(3) << aces << "*" << endl;
+    cout << "* 2 *     Twos      *" << setw(3) << twos << "*" << endl;
+    cout << "* 3 *     Threes    *" << setw(3) << threes << "*" << endl;
+    cout << "* 4 *     Fours     *" << setw(3) << fours << "*" << endl;
+    cout << "* 5 *     Fives     *" << setw(3) << fives << "*" << endl;
+    cout << "* 6 *_____Sixes_____*" << setw(3) << sixes << "*" << endl;
+    cout << "*****     Total     *" << setw(3) << uTotal << "*" << endl;
+    cout << "*************************" << endl;
+    cout << "******Lower Section******" << endl;
+    cout << "*************************" << endl;
+    cout << "* F * Four of a Kind*" << setw(3) << foKind << "*" << endl;
+    cout << "* T *Three of a Kind*" << setw(3) << thKind << "*" << endl;
+    cout << "* H *   Full House  *" << setw(3) << fHouse << "*" << endl;
+    cout << "* S * Small Straight*" << setw(3) << sStr8 << "*" << endl;
+    cout << "* L * Large Straight*" << setw(3) << lStr8 << "*" << endl;
+    cout << "* Y *    YAHTZEE    *" << setw(3) << yahtzee << "*" << endl;
+    cout << "* C *____Chance_____*" << setw(3) << chance << "*" << endl;
+    cout << "*****     Total     *" << setw(3) << lTotal << "*" << endl;
+    cout << "*************************" << endl;
+    cout << "*************************" << endl;
+    cout << "*****  GRAND TOTAL  *" << setw(3) << gTotal << "*" << endl;
+    cout << "*************************" << endl;
+    cout << "*************************" << endl;
     cout << endl;
     cout << "Thanks for playing!" << endl;
     //Executio Disicere
