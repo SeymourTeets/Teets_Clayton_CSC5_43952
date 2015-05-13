@@ -18,23 +18,14 @@ using namespace std;
 
 //Executio Incipio
 
-int values[] = { 40, 10, 100, 90, 20, 25 };
-
-int compare (const void * a, const void * b)
-{
-  return ( *(int*)a - *(int*)b );
-}
-
 int main(int argc, char** argv) {
-    //Declare Variables
-        const int SIZE = 6;
-        int die[SIZE] = {};//Yahtzee die
-    for (int c=1; c<=10; c++) {
-    //Loop for Die Roll
-        for (int i=1; i<6; i++){
-        die[i] = rand()%6+1;
-        }
-  qsort (die, 6, sizeof(int), compare);
-
+    if (die[1]==die[2] && die[2]+1==die[3] && die[3]+1==die[4] && die[4]+1==die[5])
+    {sStr8 = 30;}
+    else if (die[1]+1==die[2] && die[2]==die[3] && die[3]+1==die[4] && die[4]+1==die[5])
+    {sStr8 = 30;}
+    else if (die[1]+1==die[2] && die[2]+1==die[3] && die[3]==die[4] && die[4]+1==die[5])
+    {sStr8 = 30;}
+    else if (die[1]+1==die[2] && die[2]+1==die[3] && die[3]+1==die[4] && die[4]==die[5])
+    {sStr8 = 30;}
   return 0;
 }
