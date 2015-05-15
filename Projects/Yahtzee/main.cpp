@@ -24,6 +24,7 @@ int compare(const void * a, const void * b) {
 //Executio Incipio
 
 int main(int argc, char** argv) {
+    //Output Yahtzee Graphic
     cout << "********************************************************************" << endl;
     cout << "* Y88b   d88P       888      888                               888 *" << endl;
     cout << "*  Y88b d88P        888      888                               888 *" << endl;
@@ -44,7 +45,7 @@ int main(int argc, char** argv) {
     bool q; //Yes/No input for scratch option
     short x; //Die to hold
     short count = 1; //Amount of re-rolls
-    short maxrnds = 16, //Maximum rounds per game
+    short maxrnds = 13, //Maximum rounds per game
             round = 0; //Current round
     unsigned short ycount = 0; //Yahtzee counter
     //For scoring validation
@@ -52,20 +53,20 @@ int main(int argc, char** argv) {
     for (int i = 0; i <= 12; i++) {
         screSlt[i] = false;
     }
-    //Menu inputs
-    int aces = 0;
-    int twos = 0;
-    int threes = 0;
-    int fours = 0;
-    int fives = 0;
-    int sixes = 0;
+    //Scoring inputs
+    int aces = 0; //Aces
+    int twos = 0; //Twos
+    int threes = 0; //Threes
+    int fours = 0; //Fours
+    int fives = 0; //Fives
+    int sixes = 0; //Sixes
     int thKind = 0; //Three of a Kind
     int foKind = 0; //Four of a Kind
-    int fHouse = 0;
+    int fHouse = 0; //Full House
     int sStr8 = 0; //Small straight
     int lStr8 = 0; //Large straight
-    int yahtzee = 0;
-    int chance = 0;
+    int yahtzee = 0; //Yahtzee
+    int chance = 0; //Chance
     //Totals
     short uTotal = 0, //Upper total
             lTotal = 0, //Lower total
@@ -95,11 +96,12 @@ int main(int argc, char** argv) {
             cout << endl;
             //Initiate Switch for chosen path
             switch (choice) {
-                case'h':
+                case'h': //Hold die
                 case'H':
                     cout << "How many die would you like to hold? ";
                     cin>>x;
                     cout << endl;
+                    //Loop for die not held
                     for (int i = 1; i <= 5 - x; i++) {
                         cout << "Enter the die to re roll: ";
                         int c;
@@ -117,7 +119,7 @@ int main(int argc, char** argv) {
                     cout << endl;
                     count += 1;
                     break;
-                case'r':
+                case'r': //Re roll all die
                 case'R':
                     //Loop for Die Roll
                     for (int i = 1; i < 6; i++) {
@@ -134,14 +136,14 @@ int main(int argc, char** argv) {
                     cout << endl;
                     count += 1;
                     break;
-                case'k':
+                case'k': //Keep all die and score
                 case'K':
                     count += 3;
                     break;
                 default:
                     cout << "You have broken my game" << endl << endl;
             }
-        } while (count <= 2);
+        } while (count <= 2); //Counter to ensure that die are rolled no more than 3 times
         cout << endl;
 
         //Sort Die
@@ -178,7 +180,7 @@ int main(int argc, char** argv) {
         cout << "*************************" << endl;
         cout << endl;
 
-        bool input = true;
+        bool input = true; //Set scoring input to loop until valid input
         do {
             //Prompt for scoring options
             char option;
@@ -187,9 +189,10 @@ int main(int argc, char** argv) {
             cout << endl;
             //Select option
             switch (option) {
-                case '1':
+                case '1': //Aces
                     if (screSlt[0] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
+                        //Add all die equaling 1
                         for (int h = 1; h <= 5; h++) {
                             if (die[h] == 1) {
                                 aces += die[h];
@@ -198,6 +201,7 @@ int main(int argc, char** argv) {
                         cout << "Aces score = " << aces << endl;
                         screSlt[0] = true;
                         input = false;
+                        //If no die equal 1, offer scratch
                         if (aces == 0) {
                             q = prompt();
                             if (!q) {
@@ -207,9 +211,10 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case '2':
+                case '2': //Twos
                     if (screSlt[1] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
+                        //Add all die equaling 2
                         for (int h = 1; h <= 5; h++) {
                             if (die[h] == 2) {
                                 twos += die[h];
@@ -218,6 +223,7 @@ int main(int argc, char** argv) {
                         cout << "Twos score = " << twos << endl;
                         screSlt[1] = true;
                         input = false;
+                        //If no die equal 2, offer scratch
                         if (twos == 0) {
                             q = prompt();
                             if (!q) {
@@ -227,9 +233,10 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case '3':
+                case '3': //Threes
                     if (screSlt[2] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
+                        //Add all die equaling 3
                         for (int h = 1; h <= 5; h++) {
                             if (die[h] == 3) {
                                 threes += die[h];
@@ -238,6 +245,7 @@ int main(int argc, char** argv) {
                         cout << "Threes score = " << threes << endl;
                         screSlt[2] = true;
                         input = false;
+                        //If no die equal 3, offer scratch
                         if (threes == 0) {
                             q = prompt();
                             if (!q) {
@@ -247,9 +255,10 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case '4':
+                case '4': //Fours
                     if (screSlt[3] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
+                        //Add all die equaling 4
                         for (int h = 1; h <= 5; h++) {
                             if (die[h] == 4) {
                                 fours += die[h];
@@ -258,6 +267,7 @@ int main(int argc, char** argv) {
                         cout << "Fours score = " << fours << endl;
                         screSlt[3] = true;
                         input = false;
+                        //If no die equal 4, offer scratch
                         if (fours == 0) {
                             q = prompt();
                             if (!q) {
@@ -267,9 +277,10 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case '5':
+                case '5': //Fives
                     if (screSlt[4] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
+                        //Add all die equaling 5
                         for (int h = 1; h <= 5; h++) {
                             if (die[h] == 5) {
                                 fives += die[h];
@@ -280,6 +291,7 @@ int main(int argc, char** argv) {
                         input = false;
                         if (fives == 0) {
                             q = prompt();
+                            //If no die equal 5, offer scratch
                             if (!q) {
                                 screSlt[4] = false;
                                 input = true;
@@ -287,18 +299,20 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case '6':
+                case '6': //Sixes
                     if (screSlt[5] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
+                        //Add all die equaling 6
                         for (int h = 1; h <= 5; h++) {
                             if (die[h] == 6) {
                                 sixes += die[h];
                             }
-                        }
+                        }                        
                         cout << "Sixes score = " << sixes << endl;
                         screSlt[5] = true;
                         input = false;
-                        if (sixes == 0) {
+                        //If no die equal 6, offer scratch
+                            if (sixes == 0) {
                             q = prompt();
                             if (!q) {
                                 screSlt[5] = false;
@@ -307,8 +321,8 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 't':
-                case 'T':
+                case 't': //Three of a kind
+                case 'T': 
                     if (screSlt[6] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
                         if (die[1] == die[2] && die[2] == die[3]) {
@@ -336,7 +350,7 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 'f':
+                case 'f': //Four of a kind
                 case 'F':
                     if (screSlt[7] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
@@ -360,12 +374,14 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 'h':
+                case 'h': //Full House
                 case 'H':
                     if (screSlt[8] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
+                        //Validate if the player has a full house
                         if (die[1] == die[2] && die[3] == die[4] && die[4] == die[5]) {
                             fHouse = 25;
+                            cout << "Full House = " << fHouse << endl;
                             screSlt[8] = true;
                             input = false;
                         } else if (die[1] == die[2] && die[2] == die[3] && die[4] == die[5]) {
@@ -374,6 +390,7 @@ int main(int argc, char** argv) {
                             screSlt[8] = true;
                             input = false;
                         } else {
+                            //If not, offer scratch
                             cout << "You do not have a full house, choose another category" << endl;
                             q = prompt();
                             if (q) {
@@ -383,10 +400,11 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 's':
+                case 's': //Small Straight
                 case 'S':
                     if (screSlt[9] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
+                        //Validate if the player has a small straight
                         if (die[1]==die[2] && die[2]+1==die[3] && die[3]+1==die[4] && die[4]+1==die[5])
                         {sStr8 = 30;
                         cout<<"Small Straight Score = "<<sStr8<<endl;
@@ -407,7 +425,18 @@ int main(int argc, char** argv) {
                         cout<<"Small Straight Score = "<<sStr8<<endl;
                         screSlt[9] = true;
                         input = false;}
+                        else if (die[1]+1==die[2] && die[2]+1==die[3] && die[3]+1==die[4])
+                        {sStr8 = 30;
+                        cout<<"Small Straight Score = "<<sStr8<<endl;
+                        screSlt[9] = true;
+                        input = false;}
+                        else if (die[2]+1==die[3] && die[3]+1==die[4] && die[4]+1==die[5])
+                        {sStr8 = 30;
+                        cout<<"Small Straight Score = "<<sStr8<<endl;
+                        screSlt[9] = true;
+                        input = false;}      
                         else {
+                            //If not, offer scratch
                             cout << "You do not have a small straight, choose another category" << endl;
                             q = prompt();
                             if (q) {
@@ -417,16 +446,18 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 'l':
+                case 'l': //Large Straight
                 case 'L':
                     if (screSlt[10] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
-                        if (die[1] == die[2] + 1 && die[2] == die[3] + 1 && die[3] == die[4] + 1 && die[4] == die[5] + 1) {
+                        //Validate if the player has a large straight
+                        if (die[1] == die[2] - 1 && die[2] == die[3] - 1 && die[3] == die[4] - 1 && die[4] == die[5] - 1) {
                             lStr8 = 40;
                             cout << "Large Straight Score = " << lStr8 << endl;
                             screSlt[10] = true;
                             input = false;
                         } else {
+                            //If not, offer scratch
                             cout << "You do not have a large straight, choose another category" << endl;
                             q = prompt();
                             if (q) {
@@ -436,36 +467,22 @@ int main(int argc, char** argv) {
                         }
                     }
                     break;
-                case 'y':
+                case 'y': //Yahtzee
                 case 'Y':
-                    if (ycount == 4) {
-                        cout << "Category filled, please choose another." << endl << endl;
-                        screSlt[11] = true;
-                        
-                    } else {
-                        if (die[1] == die[2] && die[2] == die[3] && die[4] == die[5] && die[5] == die[6]) {
-                            if (yahtzee = 0) {
+                        //Validate if the player has yahtzee
+                        if (die[1] == die[2] && die[2] == die[3] && die[3]==die[4] && die[4] == die[5]) {
+                            if (ycount = 0) {
                                 yahtzee += 50;
                                 ycount += 1;
                                 cout << "Yahtzee Score = " << yahtzee << endl;
                                 input = false;
-                            } else if (yahtzee = 50) {
+                            } else if (ycount > 0) {
                                 yahtzee += 100;
-                                ycount += 1;
-                                cout << "Yahtzee Score = " << yahtzee << endl;
-                                input = false;
-                            } else if (yahtzee = 150) {
-                                yahtzee += 100;
-                                ycount += 1;
-                                cout << "Yahtzee Score = " << yahtzee << endl;
-                                input = false;
-                            } else if (yahtzee = 250) {
-                                yahtzee += 100;
-                                ycount += 1;
                                 cout << "Yahtzee Score = " << yahtzee << endl;
                                 input = false;
                             }
                         } else {
+                            //If not, offer scratch
                             cout << "You do not have a yahtzee, choose another category" << endl;
                             q = prompt();
                             if (q) {
@@ -474,9 +491,8 @@ int main(int argc, char** argv) {
                                 input = false;
                             }
                         }
-                    }
                     break;
-                case 'c':
+                case 'c': //Chance
                 case 'C':
                     if (screSlt[12] == true) cout << "Category filled, please choose another." << endl << endl;
                     else {
@@ -535,6 +551,7 @@ int main(int argc, char** argv) {
         cout << "n Upper Score of 63 or greater, giving you a";
         cout << " new Upper Score of " << uTotal << endl << endl;
     }
+    //Add the grand total and output final score card
     gTotal = uTotal + lTotal;
     cout << "The game is complete and your Grand Total = " << gTotal << endl << endl;
     cout << "    Final Score Card" << endl;
@@ -571,7 +588,6 @@ int main(int argc, char** argv) {
 }
 
 //Yes/No reader
-
 bool prompt() {
     //Declare Variables
     char q;
@@ -582,7 +598,7 @@ bool prompt() {
         //Prompt for input
         cout << "You do not have any die for this category, would you like to scratch? (Y/N) ";
         cin>>q;
-        //Switch
+        //Switch for yes or no
         switch (q) {
             case'y':
             case'Y':
@@ -598,6 +614,6 @@ bool prompt() {
                 input = true;
         }
     } while (input);
-    return output;
+    return output; //Returns true or false
 }
 
