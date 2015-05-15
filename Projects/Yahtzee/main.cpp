@@ -54,19 +54,19 @@ int main(int argc, char** argv) {
         screSlt[i] = false;
     }
     //Scoring inputs
-    int aces = 0; //Aces
-    int twos = 0; //Twos
-    int threes = 0; //Threes
-    int fours = 0; //Fours
-    int fives = 0; //Fives
-    int sixes = 0; //Sixes
-    int thKind = 0; //Three of a Kind
-    int foKind = 0; //Four of a Kind
-    int fHouse = 0; //Full House
-    int sStr8 = 0; //Small straight
-    int lStr8 = 0; //Large straight
-    int yahtzee = 0; //Yahtzee
-    int chance = 0; //Chance
+    short aces = 0; //Aces
+    short twos = 0; //Twos
+    short threes = 0; //Threes
+    short fours = 0; //Fours
+    short fives = 0; //Fives
+    short sixes = 0; //Sixes
+    short thKind = 0; //Three of a Kind
+    short foKind = 0; //Four of a Kind
+    short fHouse = 0; //Full House
+    short sStr8 = 0; //Small straight
+    short lStr8 = 0; //Large straight
+    short yahtzee = 0; //Yahtzee
+    short chance = 0; //Chance
     //Totals
     short uTotal = 0, //Upper total
             lTotal = 0, //Lower total
