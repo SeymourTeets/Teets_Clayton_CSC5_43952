@@ -31,6 +31,10 @@ int main(int argc, char** argv) {
         for (int u=0; u<7; u++){
             cout<<setw(9)<<weekday[u]<<" : ";
             cin>>monkey[i][u];
+            while (monkey[i][u]<0){
+                cout<<"Invalid Input. Enter a positive number. ";
+                cin>>monkey[i][u];
+            }
         }
         cout<<endl;
     }
