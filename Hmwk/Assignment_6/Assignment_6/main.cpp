@@ -47,9 +47,9 @@ int main(int argc, char** argv) {
         cout << "Type 4 (Rain or Shine)           to solve problem 5" << endl;
         cout << "Type 5 (Lottery)                 to solve problem 6" << endl;
         cout << "Type 6 (Rainfall Statistics)     to solve problem 7" << endl;
-        cout << "Type 7 to solve problem " << endl;
-        cout << "Type 8 to solve problem " << endl;
-        cout << "Type 9 to solve problem " << endl;
+        cout << "Type 7 (Driver's License Exam)   to solve problem 11" << endl;
+        cout << "Type 8 (Pay Roll)                to solve problem 12" << endl;
+        cout << "Type 9 (Drink Machine Simulator) to solve problem 13" << endl;
         cout << "Type anything else to quit with no solutions." << endl << endl;
         //Read the choice
         cout << "Choice : ";
@@ -394,12 +394,6 @@ void problem6() {
 
 //*******************         Problem 7           ********************/
 
-void problem7() {
-
-}
-
-//*******************         Problem 8           ********************/
-
 class TestGrader {
 public:
     char answers[20];
@@ -427,8 +421,8 @@ public:
     }
 };
 
-void problem8() {
-    //Declare Variables
+void problem7() {
+//Declare Variables
     short const max = 20;
     char input[max] = {};
     //Declare answers object and fill
@@ -444,12 +438,13 @@ void problem8() {
             cin >> input[i];
         }
     }
+    cout<<endl;
     //Grade test and output pass or fail
     a.grade(input, max);
     cout<<endl<<endl;
 }
 
-//*******************         Problem 9           ********************/
+//*******************         Problem 8           ********************/
 
 class PayRoll {
 private:
@@ -478,7 +473,7 @@ public:
     }
 };
 
-void problem9() {
+void problem8() {
     //Declare how many times the program will loop
     short nPeople;
     cout << "Enter number of employees to collect payroll information for : ";
@@ -509,6 +504,86 @@ void problem9() {
         cout << "Pay Rate  : " << person[i].getPayRate() << endl;
         cout << "Gross Pay : " << person[i].getGrossPay() << endl;
         cout << endl;
+    }
+}
+
+//*******************         Problem 9           ********************/
+
+struct Drink {
+    string name;
+    float  cost;
+    int number;
+};
+class Fountain{
+private:
+    float inputMoney (int choice){
+        float x;
+        cin>>x;
+        while (x < bev[choice].cost){
+            cout<<"Not enough money"<<endl;
+            cin>>x;
+        }
+        return x; 
+    }
+    void dailyReport (){
+        cout<<"The total sale are "<<endl;
+        cout<<total;
+    }
+public:
+    Drink *bev;
+    int num;
+    float total;
+    Fountain(Drink* stuff, int fish){
+        bev = stuff;
+        num=fish;
+        total = 0;
+        
+    }
+    ~Fountain(){dailyReport();}
+    void displayChoices(){
+        for(int i=0; i<num; i++){
+            cout<<i+1<<" "<<bev[i].name<<" "<<bev[i].cost<<endl;
+        }
+    }
+    void buyDrink(){
+        int choice;
+        cout<<"Which drink would you like to buy?"<<endl;
+        displayChoices();
+        cout<<"Type a number"<<endl;
+        cin>>choice;
+        while (choice <1 || choice >num){
+            cout<<"Invalid Input"<<endl;
+            cin>>choice;
+        }
+        choice -= 1;
+        cout<<"Give me your money."<<endl;
+        float money = inputMoney(choice);
+        total += bev[choice].cost;
+        cout<<"Here is your change!"<<endl;
+        cout<<"$"<<money - bev[choice].cost<<endl;
+    }
+
+};
+
+void problem9() {
+    Drink type[5] = {"Cola", 0.75, 20, "Root Beer", 0.75, 20, "Orange Soda", 0.75, 20, "Grape Soda", 0.75, 20, "Water", 1.00, 20};
+    Fountain fountain(type, 5);
+    //fountain.displayChoices();
+    //fountain.buyDrink();
+    while (true) {
+        char z;
+        cout<<"Do you want to buy a drink? Y for yes, N for no: "<<endl;
+        cin >> z;
+        while(z != 'Y' && z != 'N'){
+            cout<<"Invalid Input"<<endl;
+            cin>>z;
+        }
+        if (z == 'Y'){
+            fountain.buyDrink();
+        }
+        else {
+            break;
+        }
     }
 }
 
