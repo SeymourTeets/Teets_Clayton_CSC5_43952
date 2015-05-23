@@ -1,12 +1,13 @@
 /* 
  * File       : main.cpp
  * Author     : Clayton Teets
- * Created on : May 21, 2015, 6:39 PM
- * Purpose    : 
+ * Created on : May 22, 2015, 9:44 PM
+ * Purpose    : Driver's License Exam
  */
 //System Libraries
 #include <iostream> //Input/Output Library
 #include <iomanip>  //Output Formatting
+#include <string>
 using namespace std;
 //User Libraries
 
@@ -15,49 +16,52 @@ using namespace std;
 //Function Prototypes
 
 //Executio Incipio
-class PayRoll {
-    float PayRate;
-    float Hours;
+
+class TestGrader {
 public:
-    void setPayRate(float i){PayRate = i;}
-    void setHours(float i){Hours = i;}
-    float getPayRate(){return PayRate;}
-    float getHours(){return Hours;}
-    float getGrossPay(){return PayRate * Hours;}
+    char answers[20];
+
+    void setKey(string test, const short max) {
+        for (int i = 0; i < max; i++) {
+            answers[i] = test[i];
+        }
+    }
+
+    void grade(char *test, const short max) {
+        int equal = 0;
+        for (int i = 0; i < max; i++) {
+            if (answers[i] == test[i]) {
+                equal += 1;
+            }
+        }
+        if (equal < 15) {
+            cout << "You have failed your exam!" << endl;
+            cout << equal << "/20";
+        } else {
+            cout << "You have passed!" << endl;
+            cout << equal << "/20";
+        }
+    }
 };
 
 int main(int argc, char** argv) {
-    //Declare how many times the program will loop
-    short nPeople;
-    cout<<"Enter number of employees to collect payroll information for : ";
-    cin>>nPeople;
-    cout<<endl;
-    //Declare Variabes
-    PayRoll person[nPeople]; //Declare object array for people
-    float PayRate[nPeople], Hours[nPeople];
-    //Collect PayRate and hours worked for each employee
-    for (int i=0; i<nPeople; i++){
-        cout<<"Employee "<<i+1<<":"<<endl;
-        cout<<"Hours Worked : ";
-        cin>>Hours[i];
-        cout<<"Pay Rate     : ";
-        cin>>PayRate[i];
-        cout<<endl;
+    //Declare Variables
+    short const max = 20;
+    char input[max] = {};
+    //Declare answers object and fill
+    TestGrader a;
+    a.setKey("BDAACABACDBCDADCCBDA", max);
+    //Prompt for inputs
+    cout << "Input answers here using caps-lock :" << endl;
+    for (int i = 0; i < max; i++) {
+        cout << setw(2) << i + 1 << ". ";
+        cin >> input[i];
+        while (input[i] != 'A' && input[i] != 'B' && input[i] != 'C' && input[i] != 'D') {
+            cout << "Invalid input, answer must be A, B, C, or D. ";
+            cin >> input[i];
+        }
     }
-    //Call member functions to set data
-    for (int i=0; i<nPeople; i++){
-        person[i].setHours(Hours[i]);
-        person[i].setPayRate(PayRate[i]);
-    }
-    //Call Member Functions to Output Data
-    cout<<"PayRoll Data:"<<endl<<endl;
-    for (int i=0; i<nPeople; i++){
-        cout<<"Employee "<<i+1<<":"<<endl;
-        cout<<"Hours     : "<<person[i].getHours()<<endl;
-        cout<<"Pay Rate  : "<<person[i].getPayRate()<<endl;
-        cout<<"Gross Pay : "<<person[i].getGrossPay()<<endl;
-        cout<<endl;
-    }
-    //Executio Disicere
+    //Grade test and output pass or fail
+    a.grade(input, max);
     return 0;
 }

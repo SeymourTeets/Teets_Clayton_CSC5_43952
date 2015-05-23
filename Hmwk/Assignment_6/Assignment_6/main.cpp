@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
         cout << "Type 7 to solve problem " << endl;
         cout << "Type 8 to solve problem " << endl;
         cout << "Type 9 to solve problem " << endl;
-        cout << "Type anything else to quit with no solutions." << endl<<endl;
+        cout << "Type anything else to quit with no solutions." << endl << endl;
         //Read the choice
         cout << "Choice : ";
         cin>>choice;
@@ -100,7 +100,7 @@ void problem0() {
             cout << "Invalid Input, Enter 0-100. ";
             cin >> scores[i];
         }
-    } 
+    }
     cout << endl;
     //Call perfect score counter
     sCount = countPerfect(scores, SIZE);
@@ -186,7 +186,7 @@ void problem3() {
     int high, hName, hFood;
     int low, lName, lFood;
     //Collect food eaten for the week
-    cout<<"Enter food data for each day, pressing enter for next entry."<<endl;
+    cout << "Enter food data for each day, pressing enter for next entry." << endl;
     for (int i = 0; i < 3; i++) {
         cout << mName[i] << endl;
         for (int u = 0; u < 7; u++) {
@@ -373,23 +373,23 @@ void problem5() {
 
 void problem6() {
     //Declare Variables
-    const short month= 12;
+    const short month = 12;
     float rain[month] = {};
-    string mName[month] = {"January","February","March","April","May","June","July","August","September","October","November","December"};
+    string mName[month] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     //Collect rainfall data for each month
-    cout<<"Enter rainfall data, pressing enter after each month."<<endl;
-    for (int i=0; i<month; i++){
-        cout<<setw(9)<<mName[i]<<" : ";
-        cin>>rain[i];
+    cout << "Enter rainfall data, pressing enter after each month." << endl;
+    for (int i = 0; i < month; i++) {
+        cout << setw(9) << mName[i] << " : ";
+        cin >> rain[i];
     }
-    cout<<endl;
+    cout << endl;
     //Output results
-    cout<<"Rain Report For a Region In Severe Drought:"<<endl;
-    cout<<"Total rainfall           : "<<tRain(rain, month)<<" inches"<<endl;
-    cout<<"Average monthly rainfall : "<<aRain(rain, month)<<" inches"<<endl;
-    cout<<"The least rain fell in "<<mName[dMonth(rain, month)]<<" with "<<rain[dMonth(rain, month)]<<" inches."<<endl;
-    cout<<"The most rain fell in "<<mName[wMonth(rain, month)]<<" with "<<rain[wMonth(rain, month)]<<" inches."<<endl;
-    cout<<endl;
+    cout << "Rain Report For a Region In Severe Drought:" << endl;
+    cout << "Total rainfall           : " << tRain(rain, month) << " inches" << endl;
+    cout << "Average monthly rainfall : " << aRain(rain, month) << " inches" << endl;
+    cout << "The least rain fell in " << mName[dMonth(rain, month)] << " with " << rain[dMonth(rain, month)] << " inches." << endl;
+    cout << "The most rain fell in " << mName[wMonth(rain, month)] << " with " << rain[wMonth(rain, month)] << " inches." << endl;
+    cout << endl;
 }
 
 //*******************         Problem 7           ********************/
@@ -400,14 +400,116 @@ void problem7() {
 
 //*******************         Problem 8           ********************/
 
-void problem8() {
+class TestGrader {
+public:
+    char answers[20];
 
+    void setKey(string test, const short max) {
+        for (int i = 0; i < max; i++) {
+            answers[i] = test[i];
+        }
+    }
+
+    void grade(char *test, const short max) {
+        int equal = 0;
+        for (int i = 0; i < max; i++) {
+            if (answers[i] == test[i]) {
+                equal += 1;
+            }
+        }
+        if (equal < 15) {
+            cout << "You have failed your exam!" << endl;
+            cout << equal << "/20";
+        } else {
+            cout << "You have passed!" << endl;
+            cout << equal << "/20";
+        }
+    }
+};
+
+void problem8() {
+    //Declare Variables
+    short const max = 20;
+    char input[max] = {};
+    //Declare answers object and fill
+    TestGrader a;
+    a.setKey("BDAACABACDBCDADCCBDA", max);
+    //Prompt for inputs
+    cout << "Input answers here using caps-lock :" << endl;
+    for (int i = 0; i < max; i++) {
+        cout << setw(2) << i + 1 << ". ";
+        cin >> input[i];
+        while (input[i] != 'A' && input[i] != 'B' && input[i] != 'C' && input[i] != 'D') {
+            cout << "Invalid input, answer must be A, B, C, or D. ";
+            cin >> input[i];
+        }
+    }
+    //Grade test and output pass or fail
+    a.grade(input, max);
+    cout<<endl<<endl;
 }
 
 //*******************         Problem 9           ********************/
 
-void problem9() {
+class PayRoll {
+private:
+    float PayRate;
+    float Hours;
+public:
 
+    void setPayRate(float i) {
+        PayRate = i;
+    }
+
+    void setHours(float i) {
+        Hours = i;
+    }
+
+    float getPayRate() {
+        return PayRate;
+    }
+
+    float getHours() {
+        return Hours;
+    }
+
+    float getGrossPay() {
+        return PayRate * Hours;
+    }
+};
+
+void problem9() {
+    //Declare how many times the program will loop
+    short nPeople;
+    cout << "Enter number of employees to collect payroll information for : ";
+    cin>>nPeople;
+    cout << endl;
+    //Declare Variabes
+    PayRoll person[nPeople]; //Declare object array for people
+    float PayRate[nPeople], Hours[nPeople];
+    //Collect PayRate and hours worked for each employee
+    for (int i = 0; i < nPeople; i++) {
+        cout << "Employee " << i + 1 << ":" << endl;
+        cout << "Hours Worked : ";
+        cin >> Hours[i];
+        cout << "Pay Rate     : ";
+        cin >> PayRate[i];
+        cout << endl;
+    }
+    //Call member functions to set data
+    for (int i = 0; i < nPeople; i++) {
+        person[i].setHours(Hours[i]);
+        person[i].setPayRate(PayRate[i]);
+    }
+    //Call Member Functions to Output Data
+    cout << "PayRoll Data:" << endl << endl;
+    for (int i = 0; i < nPeople; i++) {
+        cout << "Employee " << i + 1 << ":" << endl;
+        cout << "Hours     : " << person[i].getHours() << endl;
+        cout << "Pay Rate  : " << person[i].getPayRate() << endl;
+        cout << "Gross Pay : " << person[i].getGrossPay() << endl;
+        cout << endl;
+    }
 }
 
 //Perfect score counter for problem 0
@@ -426,23 +528,23 @@ int countPerfect(int scores[], int SIZE) {
 
 //Calculation functions for problem 6
 
-float tRain(float rain[], const short month){
-    cout<<fixed<<setprecision(2)<<showpoint;
+float tRain(float rain[], const short month) {
+    cout << fixed << setprecision(2) << showpoint;
     //Declare total variable for return
     float total = 0;
     //Calculate total rainfall
-    for (int i=0; i<month; i++){
+    for (int i = 0; i < month; i++) {
         total += rain[i];
     }
     return total;
 }
 
-float aRain(float rain[], const short month){
-    cout<<fixed<<setprecision(2)<<showpoint;
+float aRain(float rain[], const short month) {
+    cout << fixed << setprecision(2) << showpoint;
     //Declare average variable for return
     float average = 0;
     //Add rainfall from each month
-    for (int i=0; i<month; i++){
+    for (int i = 0; i < month; i++) {
         average += rain[i];
     }
     //Divide by total of months to find average
@@ -450,13 +552,13 @@ float aRain(float rain[], const short month){
     return average;
 }
 
-int dMonth(float rain[], const short month){
+int dMonth(float rain[], const short month) {
     //Declare dry and dMonth variable for return
     float dry = rain[0];
     int dMonth = 0;
     //Determine the driest month
-    for (int i=1; i<month; i++){
-        if (rain[i]<dry){
+    for (int i = 1; i < month; i++) {
+        if (rain[i] < dry) {
             dry = rain[i];
             dMonth = i;
         }
@@ -464,13 +566,13 @@ int dMonth(float rain[], const short month){
     return dMonth;
 }
 
-int wMonth(float rain[], const short month){
-     //Declare dry and dMonth variable for return
+int wMonth(float rain[], const short month) {
+    //Declare dry and dMonth variable for return
     float wet = rain[0];
     int wMonth = 0;
     //Determine the driest month
-    for (int i=1; i<month; i++){
-        if (rain[i]>wet){
+    for (int i = 1; i < month; i++) {
+        if (rain[i] > wet) {
             wet = rain[i];
             wMonth = i;
         }
