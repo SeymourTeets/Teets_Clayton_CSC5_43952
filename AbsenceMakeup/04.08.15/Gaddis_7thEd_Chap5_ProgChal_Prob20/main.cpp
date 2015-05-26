@@ -19,12 +19,30 @@ using namespace std;
 int main(int argc, char** argv) {
     int f = 4;
     for (int i = 0; i<f; i++){
+        int count=0;
+        if(i==f-1){
+          while (count<=7){
+          cout<<"*";
+          count += 1;
+      }
+        }
+        else {
+            while (count<=7){
+          cout<<" ";
+          count += 1;
+      }
+        }
         for (int u = 0; u<i*2+1; u++){
             cout<<"*";
         }
         cout<<endl;
     }
     for (int i = 0; i<f-1; i++){
+        int count = 0;
+      while (count<=7){
+          cout<<" ";
+          count += 1;
+      }
       for (int u = (2*f-2*i-3); u>0; u--){cout<<"*";} 
       cout<<endl;
     }
