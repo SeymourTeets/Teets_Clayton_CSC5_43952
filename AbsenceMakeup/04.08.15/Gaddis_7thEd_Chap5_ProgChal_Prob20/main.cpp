@@ -46,7 +46,6 @@ int main(int argc, char** argv) {
       for (int u = (2*f-2*i-3); u>0; u--){cout<<"*";} 
       cout<<endl;
     }
-    
     //Executio Disicere
     return 0;
 }
