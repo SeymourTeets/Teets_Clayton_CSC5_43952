@@ -41,8 +41,8 @@ float waistSize(float weight, int age){
     return weight;
 }
 
-int main(int argc, char** argv) {
-    //Declare Variables
+void clothingSizes(){
+   //Declare Variables
     unsigned short height, weight, age;
     //Prompt for inputs
     cout<<"Enter the following to calculate clothing sizes."<<endl;
@@ -69,7 +69,37 @@ int main(int argc, char** argv) {
     cout<<"Your clothing sizes : "<<endl;
     cout<<"Hat size    : "<<hatSize(weight, height)<<endl;
     cout<<"Jacket size : "<<jacketSize(height, weight, age)<<endl;
-    cout<<"Waist size  : "<<waistSize(weight, age)<<endl;
+    cout<<"Waist size  : "<<waistSize(weight, age)<<endl<<endl;
+}
+
+int main(int argc, char** argv) {
+    //Declare Variables
+    bool another = false;
+    char choice;
+    //Run clothing size once
+    clothingSizes();
+    //Prompt for loop
+    cout<<"Would you like to solve another problem? "<<endl;
+    cout<<"Enter 'Y' for yes and anything else to quit. ";
+    cin>>choice;
+    cout<<endl;
+    if (choice == 'Y' || choice == 'y'){
+        another = true;
+    }
+    do{
+        another = false;
+        //Run clothing size once
+        clothingSizes();
+        //Prompt for loop
+        cout<<"Would you like to solve another problem? "<<endl;
+        cout<<"Enter 'Y' for yes and anything else to quit. ";
+        cin>>choice;
+        cout<<endl;
+        if (choice == 'Y' || choice == 'y'){
+            another = true;
+        }
+    }while (another);
+    
     //Executio Disicere
     return 0;
 }
