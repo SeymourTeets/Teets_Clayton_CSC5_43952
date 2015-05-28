@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
                 cout<<"* To solve problem 8,  type 6 (Star Search)               *"<<endl;
                 cout<<"* To solve problem 10, type 7 (Present Value)             *"<<endl;
                 cout<<"* To solve problem 11, type 8 (Stock Profit)              *"<<endl;
-                cout<<"* To solve problem 15, type 9 (Overloaded Hospital)       *"<<endl;
+                cout<<"* To solve problem 15, type 9 (Population)                *"<<endl;
                 cout<<"* Type anything else to quit with no solutions.           *"<<endl;
                 cout<<"***********************************************************"<<endl;
             //Read the choice
