@@ -527,7 +527,7 @@ private:
     }
     void dailyReport (){
         cout<<"The total sale are "<<endl;
-        cout<<total;
+        cout<<total<<endl;
     }
 public:
     Drink *bev;

@@ -16,16 +16,268 @@ using namespace std;
 //Global Constants
 
 //Function Prototypes
-bool prompt();
-//Die sorter for scoring algorithms
 
-int compare(const void * a, const void * b) {
-    return ( *(int*) a - *(int*) b);
-}
 //Executio Incipio
 
+class die {
+private:
+    unsigned short die[5];
+    unsigned short counter;
+public:
+
+    void roll() {
+        //Loop for Die Roll
+        for (int i = 0; i < 5; i++) {
+            do {
+                die[i] = rand() % 6 + 1;
+            } while (die[i] == 0);
+        }
+        counter += 1;
+
+    }
+
+    void showDie() {
+        //Output Die
+        cout << "Your role:" << endl;
+        for (int i = 0; i < 5; i++) {
+            cout << "Dice " << i;
+            cout << " - |" << die[i] << "|" << endl;
+        }
+    }
+
+    void reRollset() {
+        cout << "How many die would you like to re roll? ";
+        int x;
+        cin>>x;
+        cout << endl;
+        //Loop for die not held
+        for (int i = 0; i <= x - 1; i++) {
+            cout << "Enter the die to re roll: ";
+            int c;
+            cin>>c;
+            die[c - 1] = rand() % 6 + 1;
+            cout << "Dice " << c;
+            cout << " - |" << die[c - 1] << "|" << endl << endl;
+        }
+        counter += 1;
+    }
+
+    bool roundCount() {
+        if (counter <= 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+};
+
+class scoreCard {
+private:
+    unsigned short score[16];
+    unsigned short counter;
+    unsigned short ycount;
+    bool scoreBox[13];
+
+public:
+
+    void getscoreCard() {
+        //Output Score Card
+        cout << "*************************" << endl;
+        cout << "******Upper Section******" << endl;
+        cout << "*************************" << endl;
+        cout << "* 1 *     Ones      *" << setw(3) << score[0] << "*" << endl;
+        cout << "* 2 *     Twos      *" << setw(3) << score[1] << "*" << endl;
+        cout << "* 3 *     Threes    *" << setw(3) << score[2] << "*" << endl;
+        cout << "* 4 *     Fours     *" << setw(3) << score[3] << "*" << endl;
+        cout << "* 5 *     Fives     *" << setw(3) << score[4] << "*" << endl;
+        cout << "* 6 *_____Sixes_____*" << setw(3) << score[5] << "*" << endl;
+        cout << "*****     Total     *" << setw(3) << score[13] << "*" << endl;
+        cout << "*************************" << endl;
+        cout << "******Lower Section******" << endl;
+        cout << "*************************" << endl;
+        cout << "* F *Three of a Kind*" << setw(3) << score[6] << "*" << endl;
+        cout << "* T * Four of a Kind*" << setw(3) << score[7] << "*" << endl;
+        cout << "* H *   Full House  *" << setw(3) << score[8] << "*" << endl;
+        cout << "* S * Small Straight*" << setw(3) << score[9] << "*" << endl;
+        cout << "* L * Large Straight*" << setw(3) << score[10] << "*" << endl;
+        cout << "* Y *    YAHTZEE    *" << setw(3) << score[11] << "*" << endl;
+        cout << "* C *____Chance_____*" << setw(3) << score[12] << "*" << endl;
+        cout << "*****     Total     *" << setw(3) << score[14] << "*" << endl;
+        cout << "*************************" << endl;
+        cout << "*************************" << endl;
+        cout << "*****  GRAND TOTAL  *" << setw(3) << score[15] << "*" << endl;
+        cout << "*************************" << endl;
+        cout << "*************************" << endl << endl;
+    }
+
+    void lowAdder(unsigned int die[], int i) {
+        for (int h = 0; h < 5; h++) {
+            if (die[h] == i) {
+                score[i - 1] += die[h];
+            }
+        }
+    }
+
+    bool isFilled(int i) {
+        if (scoreBox[i] == true) {
+            cout << "Category filled, please choose another." << endl << endl;
+        } else return true;
+    }
+
+    bool scratch(int i) {
+        //Declare Variables
+        char q;
+        bool input; //Input validation
+        bool output; //Return
+        //Input Validation
+        do {
+            //Prompt for input
+            cout << "You do not have any die for this category, would you like to scratch? (Y/N) ";
+            cin>>q;
+            //Switch for yes or no
+            switch (q) {
+                case'y':
+                case'Y':
+                    output = true;
+                    input = false;
+                    break;
+                case'n':
+                case'N':
+                    output = false;
+                    input = false;
+                    break;
+                default: cout << "Invalid input" << endl;
+                    input = true;
+            }
+        } while (input);
+        return output; //Returns true or false    
+    }
+
+    bool roundCount() {
+        if (counter <= 13) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    bool threeKind(unsigned int die[]) {
+        //Validate if the player has three of a kind
+        if (die[1] == die[2] && die[2] == die[3]) {
+            score[6] = die[1] + die[2] + die[3];
+            cout << "3 of a Kind Score = " << score[6] << endl;
+            scoreBox[6] = true;
+        } else if (die[2] == die[3] && die[3] == die[4]) {
+            score[6] = die[2] + die[3] + die[4];
+            cout << "3 of a Kind Score = " << score[6] << endl;
+            scoreBox[6] = true;
+        } else if (die[0] == die[1] && die[1] == die[2]) {
+            score[6] = die[0] + die[1] + die[2];
+            cout << "3 of a Kind Score = " << score[6] << endl;
+            scoreBox[6] = true;
+        } else {
+            cout << "You do not have 3 of a kind, would you like to scratch?" << endl;
+            return true;
+        }
+    }
+
+    bool fourKind(unsigned int die[]) {
+        //Validate if the player has four of a kind
+        if (die[0] == die[1] && die[1] == die[2] && die[2] == die[3]) {
+            score[7] = die[0] + die[1] + die[2] + die[3];
+            cout << "4 of a Kind Score = " << score[7] << endl;
+            scoreBox[7] = true;
+        } else if (die[1] == die[2] && die[2] == die[3] && die[3] == die[4]) {
+            score[7] = die[1] + die[2] + die[3] + die[4];
+            cout << "4 of a Kind Score = " << score[7] << endl;
+            scoreBox[7] = true;
+        } else {
+            cout << "You do not have 4 of a kind, would you like to scratch?" << endl;
+            return true;
+        }
+    }
+
+    bool fullHouse(unsigned int die[]) {
+        //Validate if the player has a full house
+        if (die[1] == die[2] && die[3] == die[4] && die[4] == die[5]) {
+            score[8] = 25;
+            cout << "Full House = " << score[8] << endl;
+            scoreBox[8] = true;
+        } else if (die[1] == die[2] && die[2] == die[3] && die[4] == die[5]) {
+            score[8] = 25;
+            cout << "Full House = " << score[8] << endl;
+            scoreBox[8] = true;
+        } else {
+            cout << "You do not have a full house, would you like to scratch?" << endl;
+            return true;
+        }
+    }
+
+    bool smallStraight(unsigned int die[]) {
+        //Validate if the player has a small straight
+        if (die[0] == die[1] && die[1] + 1 == die[2] && die[2] + 1 == die[3] && die[3] + 1 == die[4]) {
+            score[9] = 30;
+            cout << "Small Straight Score = " << score[9] << endl;
+            scoreBox[9] = true;
+        } else if (die[0] + 1 == die[1] && die[1] == die[2] && die[2] + 1 == die[3] && die[3] + 1 == die[4]) {
+            score[9] = 30;
+            cout << "Small Straight Score = " << score[9] << endl;
+            scoreBox[9] = true;
+        } else if (die[0] + 1 == die[1] && die[1] + 1 == die[2] && die[2] == die[3] && die[3] + 1 == die[4]) {
+            score[9] = 30;
+            cout << "Small Straight Score = " << score[9] << endl;
+            scoreBox[9] = true;
+        } else if (die[0] + 1 == die[1] && die[1] + 1 == die[2] && die[2] + 1 == die[3] && die[3] == die[4]) {
+            score[9] = 30;
+            cout << "Small Straight Score = " << score[9] << endl;
+            scoreBox[9] = true;
+        } else if (die[0] + 1 == die[1] && die[1] + 1 == die[2] && die[2] + 1 == die[3]) {
+            score[9] = 30;
+            cout << "Small Straight Score = " << score[9] << endl;
+            scoreBox[9] = true;
+        } else if (die[1] + 1 == die[2] && die[2] + 1 == die[3] && die[3] + 1 == die[4]) {
+            score[9] = 30;
+            cout << "Small Straight Score = " << score[9] << endl;
+            scoreBox[9] = true;
+        } else {
+            cout << "You do not have a small straight, would you like to scratch?" << endl;
+            return true;
+        }
+    }
+
+    bool largeStraight(unsigned int die[]) {
+        //Validate if the player has a large straight
+        if (die[1] == die[2] - 1 && die[2] == die[3] - 1 && die[3] == die[4] - 1 && die[4] == die[5] - 1) {
+            score[10] = 40;
+            cout << "Large Straight Score = " << score[10] << endl;
+            scoreBox[10] = true;
+        } else {
+            cout << "You do not have a large straight, would you like to scratch?" << endl;
+            return true;
+        }
+    }
+
+    bool yahtzee(unsigned int die[]) {
+        //Validate if the player has yahtzee
+        if (die[0] == die[1] && die[1] == die[2] && die[2] == die[3] && die[3] == die[4]) {
+            if (ycount == 0) {
+                score[11] += 50;
+                ycount += 1;
+                cout << "Yahtzee Score = " << score[11] << endl;
+            } else if (ycount > 1) {
+                score[11] += 100;
+                cout << "Yahtzee Score = " << score[11] << endl;
+            }
+        } else {
+            cout << "You do not have a yahtzee, would you like to scratch?" << endl;
+            return true;
+        }
+    }
+
+};
+
 int main(int argc, char** argv) {
-    //Output Yahtzee Graphic
+//Output Yahtzee Graphic
     cout << "********************************************************************" << endl;
     cout << "* Y88b   d88P       888      888                               888 *" << endl;
     cout << "*  Y88b d88P        888      888                               888 *" << endl;
@@ -39,6 +291,9 @@ int main(int argc, char** argv) {
     cout << endl << endl;
     //Initialize the random number seed
     srand(static_cast<unsigned int> (time(0)));
+    //Create player object
+    die a;
+    scoreCard a;
     //Declare Variables
     const int SIZE = 6; //Six Sided Die
     int die[SIZE] = {}; //Yahtzee Die
@@ -49,25 +304,15 @@ int main(int argc, char** argv) {
     const short maxrnds = 13; //Maximum rounds per game
     short round = 0; //Current round
     unsigned short ycount = 0; //Yahtzee counter
+    int score[16];
     //For scoring validation
     bool screSlt[13]; //Score slot
     for (int i = 0; i <= 12; i++) {
         screSlt[i] = false;
     }
-    //Scoring inputs
-    short aces = 0; //Aces
-    short twos = 0; //Twos
-    short threes = 0; //Threes
-    short fours = 0; //Fours
-    short fives = 0; //Fives
-    short sixes = 0; //Sixes
-    short thKind = 0; //Three of a Kind
-    short foKind = 0; //Four of a Kind
-    short fHouse = 0; //Full House
-    short sStr8 = 0; //Small straight
-    short lStr8 = 0; //Large straight
-    short yahtzee = 0; //Yahtzee
-    short chance = 0; //Chance
+    for (int i = 0; i <= 15; i++) {
+        score[i] = 0;
+    }
     //Totals
     short uTotal = 0, //Upper total
             lTotal = 0, //Lower total
@@ -153,33 +398,7 @@ int main(int argc, char** argv) {
         //Output Score Card
         cout << "Let's SCORE!" << endl;
         cout << "\nScoring Options: Enter number for category to enter score.\n" << endl;
-        cout << "*************************" << endl;
-        cout << "******Upper Section******" << endl;
-        cout << "*************************" << endl;
-        cout << "* 1 *     Ones      *" << setw(3) << aces << "*" << endl;
-        cout << "* 2 *     Twos      *" << setw(3) << twos << "*" << endl;
-        cout << "* 3 *     Threes    *" << setw(3) << threes << "*" << endl;
-        cout << "* 4 *     Fours     *" << setw(3) << fours << "*" << endl;
-        cout << "* 5 *     Fives     *" << setw(3) << fives << "*" << endl;
-        cout << "* 6 *_____Sixes_____*" << setw(3) << sixes << "*" << endl;
-        cout << "*****     Total     *" << setw(3) << uTotal << "*" << endl;
-        cout << "*************************" << endl;
-        cout << "******Lower Section******" << endl;
-        cout << "*************************" << endl;
-        cout << "* F * Four of a Kind*" << setw(3) << foKind << "*" << endl;
-        cout << "* T *Three of a Kind*" << setw(3) << thKind << "*" << endl;
-        cout << "* H *   Full House  *" << setw(3) << fHouse << "*" << endl;
-        cout << "* S * Small Straight*" << setw(3) << sStr8 << "*" << endl;
-        cout << "* L * Large Straight*" << setw(3) << lStr8 << "*" << endl;
-        cout << "* Y *    YAHTZEE    *" << setw(3) << yahtzee << "*" << endl;
-        cout << "* C *____Chance_____*" << setw(3) << chance << "*" << endl;
-        cout << "*****     Total     *" << setw(3) << lTotal << "*" << endl;
-        cout << "*************************" << endl;
-        cout << "*************************" << endl;
-        cout << "*****  GRAND TOTAL  *" << setw(3) << gTotal << "*" << endl;
-        cout << "*************************" << endl;
-        cout << "*************************" << endl;
-        cout << endl;
+        
 
         bool input = true; //Set scoring input to loop until valid input
         do {
@@ -587,35 +806,4 @@ int main(int argc, char** argv) {
     cout << "Thanks for playing!" << endl;
     //Executio Disicere
     return 0;
-}
-
-//Yes/No reader
-
-bool prompt() {
-    //Declare Variables
-    char q;
-    bool input; //Input validation
-    bool output; //Return
-    //Input Validation
-    do {
-        //Prompt for input
-        cout << "You do not have any die for this category, would you like to scratch? (Y/N) ";
-        cin>>q;
-        //Switch for yes or no
-        switch (q) {
-            case'y':
-            case'Y':
-                output = true;
-                input = false;
-                break;
-            case'n':
-            case'N':
-                output = false;
-                input = false;
-                break;
-            default: cout << "Invalid input" << endl;
-                input = true;
-        }
-    } while (input);
-    return output; //Returns true or false
 }
