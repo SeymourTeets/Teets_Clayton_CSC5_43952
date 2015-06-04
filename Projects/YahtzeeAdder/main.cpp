@@ -9,6 +9,8 @@
 #include <iomanip>  //Output Formatting
 #include <stdio.h>      /* printf */
 #include <stdlib.h>     /* qsort */
+#include <fstream>
+#include <string>
 using namespace std;
 //User Libraries
 
@@ -19,13 +21,22 @@ using namespace std;
 //Executio Incipio
 
 int main(int argc, char** argv) {
-    if (die[1]==die[2] && die[2]+1==die[3] && die[3]+1==die[4] && die[4]+1==die[5])
-    {sStr8 = 30;}
-    else if (die[1]+1==die[2] && die[2]==die[3] && die[3]+1==die[4] && die[4]+1==die[5])
-    {sStr8 = 30;}
-    else if (die[1]+1==die[2] && die[2]+1==die[3] && die[3]==die[4] && die[4]+1==die[5])
-    {sStr8 = 30;}
-    else if (die[1]+1==die[2] && die[2]+1==die[3] && die[3]+1==die[4] && die[4]==die[5])
-    {sStr8 = 30;}
+    int hScore, score = 70;
+    string hName;
+    string name = "Rick";
+    ifstream high;
+    high.open("highscore.txt");
+    high >> hScore >> hName;
+    cout << hScore << endl;
+    cout << hName << endl;
+    high.close();
+    if (hScore < score) {
+        ofstream high;
+        high.open("highscore.txt");
+        high<<score<<endl;
+        high<<name<<endl;
+        high.close();
+        
+    }
   return 0;
 }
