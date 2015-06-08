@@ -13,7 +13,7 @@ int ScoreCard::getFScore() {
 
 string ScoreCard::getFilled(unsigned short i) {
     string x[2] = {"Open", "Filled"};
-    return (scoreBox[i] == false)?(x[0]):(x[1]);
+    return (scoreBox[i] == false) ? (x[0]) : (x[1]);
 }
 
 string ScoreCard::getName() {
@@ -32,11 +32,11 @@ void ScoreCard::setHScore() {
     if (hScore < score[15]) {
         ofstream high;
         high.open("highscore.txt");
-        high<<score[15]<<endl;
-        high<<name<<endl;
+        high << score[15] << endl;
+        high << name << endl;
         high.close();
-        cout<<name<<" has the new high score of "<<score[15]<<endl;
-        cout<<"Congratulations, you beat "<<hName<<"'s high score by "<<score[15]-hScore<<endl;
+        cout << name << " has the new high score of " << score[15] << endl;
+        cout << "Congratulations, you beat " << hName << "'s high score by " << score[15] - hScore << endl;
     }
 }
 

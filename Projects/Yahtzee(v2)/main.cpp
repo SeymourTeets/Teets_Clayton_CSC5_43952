@@ -58,7 +58,7 @@ int main(int argc, char** argv) {
     ScoreCard s[players];
     //Zero round counter and card slots and prompt for player names
     for (int p = 0; p < players; p++) {
-        cout<<"Enter player "<<p + 1<<"'s name: ";
+        cout << "Enter player " << p + 1 << "'s name: ";
         s[p].setName();
         s[p].startCount();
         s[p].setYCount();
@@ -69,7 +69,7 @@ int main(int argc, char** argv) {
             s[p].zeroCard(i);
         }
     }
-    cout<<endl;
+    cout << endl;
     //Loop for 13 rounds
     while (s[players - 1].roundCount()) {
         for (int p = 0; p < players; p++) {
@@ -84,6 +84,7 @@ int main(int argc, char** argv) {
             //Zero die round counter
             d[p].setCount(0);
             do {
+                //Prompt for die choice
                 char choice;
                 cout << "Would you like to hold, roll again, or keep? (H/R/K) ";
                 cin>>choice;
@@ -240,6 +241,18 @@ int main(int argc, char** argv) {
         //Add the grand total and output final scorecard
         s[p].finalScore();
         s[p].getscoreCard();
+    }
+    //Determine and output winner for two or more players
+    if (players >= 2) {
+        int winner = s[0].getFScore();
+        int won = 0;
+        for (int p = 1; p < players; p++) {
+            if (s[p].getFScore() > winner) {
+                winner = s[p].getFScore();
+                won = p;
+            }
+        }
+        cout << s[won].getName() << " won with a score of " << s[won].getFScore() << endl;
     }
     //Compare player score to high score
     for (int p = 0; p < players; p++) {
